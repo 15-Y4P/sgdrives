@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latest COE Prices Singapore — Live Results, Trends & Chart</title>
+<meta name="description" content="Latest Singapore COE bidding results for all categories with round-by-round changes, interactive price trend chart, and next-round outlook.">
+<link rel="canonical" href="https://www.sgdrives.com/coe-prices-singapore/">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<meta property="og:title" content="Latest COE Prices Singapore — Live Results & Chart">
+<meta property="og:description" content="Latest COE bidding results with round-by-round changes, interactive trend chart and next-round outlook.">
+<meta property="og:url" content="https://www.sgdrives.com/coe-prices-singapore/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.sgdrives.com/assets/og-image.png">
+<meta property="og:site_name" content="SG Drives">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/chart.umd.js"></script>
+<style>
+/* ---- screenshot board ---- */
+.board{
+  background:linear-gradient(180deg,#1E2126,#141619);
+  border:3px solid #000;border-radius:16px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.1), 0 22px 48px -26px rgba(20,22,26,.5);
+  padding:26px 28px 22px;color:#F2F3EF;
+}
+.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.board-title{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 112;font-weight:800;font-size:clamp(19px,2.6vw,24px);letter-spacing:.01em}
+.board-title small{display:block;font-family:'IBM Plex Sans';font-weight:600;font-size:13px;color:#A7AAA2;letter-spacing:.06em;margin-top:2px;text-transform:uppercase}
+.board-brand{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:.14em;background:#F2F3EF;color:#14161A;padding:3px 12px 2px;border-radius:5px}
+.board-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media(max-width:860px){.board-grid{grid-template-columns:repeat(2,1fr)}.board-grid .bcell:last-child{grid-column:1/-1}}
+.bcell{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:14px 10px 12px;text-align:center;min-width:0}
+.bcell .cat{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;color:#A7AAA2}
+.bcell .px{font-family:'Archivo',sans-serif;font-weight:850;font-size:clamp(16px,1.85vw,23px);letter-spacing:-.015em;margin:4px 0 2px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bcell .chg{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.bcell .chg.up{color:#FF6B7A}
+.bcell .chg.down{color:#4ADE80}
+.bcell .chg.flat{color:#A7AAA2}
+.board-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:#8B8E86}
+/* ---- chart ---- */
+.chart-controls{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{
+  font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:600;
+  padding:6px 13px;border-radius:8px;border:1.5px solid var(--line);
+  background:var(--paper-raise);color:var(--ink-soft);cursor:pointer;
+}
+.seg button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.seg button.cat-on-A{background:#C8102E;border-color:#C8102E;color:#fff}
+.seg button.cat-on-B{background:#14161A;border-color:#14161A;color:#fff}
+.seg button.cat-on-C{background:#6B7280;border-color:#6B7280;color:#fff}
+.seg button.cat-on-D{background:#B45309;border-color:#B45309;color:#fff}
+.seg button.cat-on-E{background:#0E7490;border-color:#0E7490;color:#fff}
+.chart-wrap{position:relative;height:380px}
+@media(max-width:700px){.chart-wrap{height:300px}}
+/* ---- history table deltas ---- */
+table.breakdown td .d{display:block;font-size:11.5px;font-weight:700;margin-top:1px}
+table.breakdown td .d.up{color:var(--sg-red)}
+table.breakdown td .d.down{color:var(--ok)}
+table.breakdown td .d.flat{color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="/" aria-label="SG Drives home">
+      <span class="logo-plate">SGD</span>
+      <span class="logo-name">SG DRIVES <span>· Ownership tools</span></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="/coe-prices-singapore/" aria-current="page">COE</a>
+      <a href="/#tools">Tools</a>
+      <a href="/services/">Services</a>
+      <a href="/blog/">Guides</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/6580336863" target="_blank" rel="noopener">WhatsApp us</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap-narrow page-head" style="padding-bottom:24px">
+    <div class="eyebrow">COE watch</div>
+    <h1 style="margin-bottom:6px">Latest COE Results</h1>
+    <p class="asof" id="asOf" style="margin:0">Loading…</p>
+  </div>
+
+  <div class="wrap-narrow section">
+    <!-- SCREENSHOT BOARD -->
+    <div class="board" id="board" style="margin-bottom:34px">
+      <div class="board-head">
+        <div class="board-title">COE BIDDING RESULTS<small id="boardDate">—</small></div>
+        <span class="board-brand">SGDRIVES.COM</span>
+      </div>
+      <div class="board-grid" id="boardGrid"></div>
+      <div class="board-foot">
+        <span>▲▼ change vs previous round</span>
+        <span>Full trends &amp; tools → www.sgdrives.com</span>
+      </div>
+    </div>
+
+    <!-- CHART -->
+    <div class="tool-card" style="margin-bottom:34px">
+      <h2 style="margin-bottom:16px">Price trend</h2>
+      <div class="chart-controls">
+        <div class="seg" id="catSeg">
+          <button data-cat="A" class="cat-on-A">Cat A</button>
+          <button data-cat="B" class="cat-on-B">Cat B</button>
+          <button data-cat="C">Cat C</button>
+          <button data-cat="D">Cat D</button>
+          <button data-cat="E" class="cat-on-E">Cat E</button>
+        </div>
+        <div class="seg" id="rangeSeg">
+          <button data-n="12">6M</button>
+          <button data-n="24" class="on">1Y</button>
+          <button data-n="48">2Y</button>
+          <button data-n="120">5Y</button>
+          <button data-n="0">All</button>
+        </div>
+      </div>
+      <div class="chart-wrap"><canvas id="coeChart"></canvas></div>
+      <p class="res-note" id="chartNote"></p>
+    </div>
+
+    <!-- HISTORY -->
+    <div class="tool-card" style="margin-bottom:34px">
+      <h2>Round by round</h2>
+      <div style="overflow-x:auto">
+        <table class="breakdown" id="coeTable">
+          <thead>
+            <tr><th>Exercise</th><th class="num">Cat A</th><th class="num">Cat B</th><th class="num">Cat C</th><th class="num">Cat D</th><th class="num">Cat E</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- OUTLOOK -->
+    <div class="tool-card">
+      <h2>Next-round outlook <span style="font-size:13px;font-weight:600;color:var(--ink-soft);font-family:'IBM Plex Sans'">(indicative, not advice)</span></h2>
+      <div class="fc-grid" id="fcGrid" style="margin-top:14px"></div>
+      <p class="res-note">Momentum extension of recent rounds only — quota changes, launches and bidding behaviour can move premiums far outside these bands.</p>
+    </div>
+
+    <div class="cta-panel">
+      <div>
+        <b>Timing your purchase around COE?</b>
+        <p>Tell me your target car and timeline — I'll advise whether to move now, wait, or lock in a guaranteed-COE deal.</p>
+      </div>
+      <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%2C%20I%27m%20watching%20COE%20prices%20on%20sgdrives.com%20and%20want%20advice%20on%20timing" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+
+    <div class="faq">
+      <details><summary>Which category is my car?</summary><p>Cat A: non-fully-electric cars up to 1,600cc and 97kW (130bhp), EVs up to 110kW. Cat B: above those thresholds. Cat E: open category, usable for any vehicle.</p></details>
+      <details><summary>What is PQP?</summary><p>The Prevailing Quota Premium — a 3-month moving average of winning premiums, payable to renew an existing COE instead of bidding.</p></details>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <div><strong style="color:var(--ink)">SG Drives</strong> · Singapore car ownership tools<br>© 2026 sgdrives.com</div>
+    <div class="disclaimer">Figures drawn from published bidding results; the outlook is an indicative trend extension only, not financial advice. Verify official results at OneMotoring.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/6580336863" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.8 5 2.3 7L4.6 28l6.3-1.6c1.8 1 3.9 1.5 6.1 1.5 6.6 0 12-5.3 12-11.9C29 8.3 22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1 1-3.6-.3-.4c-1.2-1.7-1.9-3.7-1.9-5.8 0-5.4 4.8-9.8 10.6-9.8s10.6 4.4 10.6 9.8-4.8 10.4-10.6 10.4zm5.8-7.3c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.6 5.7 5 3.4 1.4 3.4.9 4 .9.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+(function(){
+  var CATS = ['A','B','C','D','E'];
+  var CAT_DESC = {A:'≤1600cc / EV ≤110kW', B:'>1600cc / EV >110kW', C:'Goods & buses', D:'Motorcycles', E:'Open'};
+  var CAT_COLOR = {A:'#C8102E', B:'#14161A', C:'#6B7280', D:'#B45309', E:'#0E7490'};
+
+  // Baked fallback — newest first. Update after each exercise if live feed is down.
+  var FALLBACK = [
+    {month:'2026-06', bid:2, label:'Jun 2026 · 2nd', short:"Jun'26·2", A:123847, B:123502, C:93001, D:9989,  E:129002},
+    {month:'2026-06', bid:1, label:'Jun 2026 · 1st', short:"Jun'26·1", A:126009, B:126989, C:94000, D:10000, E:129000},
+    {month:'2026-05', bid:2, label:'May 2026 · 2nd', short:"May'26·2", A:124229, B:129501, C:92223, D:9689,  E:130000},
+    {month:'2026-05', bid:1, label:'May 2026 · 1st', short:"May'26·1", A:124790, B:126236, C:87479, D:9452,  E:127700},
+    {month:'2026-04', bid:2, label:'Apr 2026 · 2nd', short:"Apr'26·2", A:123010, B:121001, C:83501, D:9290,  E:125002}
+  ];
+  var FALLBACK_ASOF = 'June 2026 · 2nd bidding';
+
+  var fmt = function(n){ return 'S$' + Math.round(n).toLocaleString('en-SG'); };
+  var fmtK = function(n){ return n>=1000 ? '$'+Math.round(n/1000)+'k' : '$'+Math.round(n); };
+
+  var chart = null, allRounds = FALLBACK, activeCats = {A:true,B:true,C:false,D:false,E:true}, rangeN = 24;
+
+  function chg(cur, prev){
+    if(prev===undefined) return {cls:'flat', txt:'—'};
+    var d = cur - prev;
+    if(d===0) return {cls:'flat', txt:'unchanged'};
+    return {cls:d>0?'up':'down', txt:(d>0?'▲ +':'▼ −')+Math.abs(d).toLocaleString('en-SG')};
+  }
+
+  function renderBoard(rounds){
+    var latest = rounds[0], prev = rounds[1] || {};
+    document.getElementById('boardDate').textContent = latest.label + ' bidding exercise';
+    var g = '';
+    CATS.forEach(function(c){
+      var d = chg(latest[c], prev[c]);
+      g += '<div class="bcell"><div class="cat">CAT '+c+'</div>'+
+        '<div class="px">'+fmt(latest[c])+'</div>'+
+        '<div class="chg '+d.cls+'">'+d.txt+'</div>'+
+        '<div class="cat" style="margin-top:5px;font-size:10.5px;letter-spacing:.04em">'+CAT_DESC[c]+'</div></div>';
+    });
+    document.getElementById('boardGrid').innerHTML = g;
+  }
+
+  function renderTable(rounds){
+    var tb = '';
+    rounds.slice(0,10).forEach(function(r,i){
+      var prev = rounds[i+1] || {};
+      tb += '<tr><td>'+r.label+'</td>';
+      CATS.forEach(function(c){
+        var d = chg(r[c], prev[c]);
+        tb += '<td class="num">'+fmt(r[c])+'<span class="d '+d.cls+'">'+(d.txt==='—'?'':d.txt)+'</span></td>';
+      });
+      tb += '</tr>';
+    });
+    document.querySelector('#coeTable tbody').innerHTML = tb;
+  }
+
+  function renderOutlook(rounds){
+    var latest = rounds[0], fc = '';
+    ['A','B','E'].forEach(function(c){
+      var deltas = [];
+      for(var i=0;i<Math.min(rounds.length-1,4);i++) deltas.push(rounds[i][c]-rounds[i+1][c]);
+      var avg = deltas.reduce(function(a,b){return a+b;},0)/deltas.length;
+      var mid = latest[c] + avg;
+      var sd = Math.sqrt(deltas.reduce(function(a,b){return a+(b-avg)*(b-avg);},0)/deltas.length);
+      var band = Math.max(sd, latest[c]*0.015);
+      var bias = avg>500?'Upward momentum':(avg<-500?'Softening':'Broadly flat');
+      fc += '<div class="fc"><div class="k">Cat '+c+'</div>'+
+        '<div class="range">'+fmt(mid-band)+' – '+fmt(mid+band)+'</div>'+
+        '<div class="bias">'+bias+'</div></div>';
+    });
+    document.getElementById('fcGrid').innerHTML = fc;
+  }
+
+  function renderChart(){
+    var rounds = rangeN>0 ? allRounds.slice(0, rangeN) : allRounds.slice();
+    rounds = rounds.slice().reverse(); // chronological
+    var labels = rounds.map(function(r){ return r.short || r.label; });
+    var datasets = [];
+    CATS.forEach(function(c){
+      if(!activeCats[c]) return;
+      datasets.push({
+        label:'Cat '+c,
+        data: rounds.map(function(r){ return r[c]; }),
+        borderColor: CAT_COLOR[c],
+        backgroundColor: CAT_COLOR[c],
+        borderWidth: 2.5,
+        pointRadius: rounds.length>40?0:3,
+        pointHoverRadius:5,
+        tension:.25
+      });
+    });
+    if(chart) chart.destroy();
+    chart = new Chart(document.getElementById('coeChart'), {
+      type:'line',
+      data:{labels:labels, datasets:datasets},
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        interaction:{mode:'index', intersect:false},
+        plugins:{
+          legend:{display:false},
+          tooltip:{
+            backgroundColor:'#14161A', titleFont:{family:'Archivo',weight:'700'},
+            bodyFont:{family:'IBM Plex Sans'}, padding:12, cornerRadius:8,
+            callbacks:{ label:function(ctx){ return ' '+ctx.dataset.label+': '+fmt(ctx.parsed.y); } }
+          }
+        },
+        scales:{
+          x:{grid:{display:false}, ticks:{maxTicksLimit:10, font:{family:'IBM Plex Sans', size:11}}},
+          y:{grid:{color:'#E7E9E2'}, ticks:{font:{family:'IBM Plex Sans', size:11}, callback:function(v){ return fmtK(v); }}}
+        }
+      }
+    });
+    document.getElementById('chartNote').textContent = 'Showing '+rounds.length+' bidding rounds. Tap a category or range to adjust; hover any point for exact premiums.';
+  }
+
+  function renderAll(rounds, live, asofText){
+    allRounds = rounds;
+    document.getElementById('asOf').innerHTML = (live?'<span class="live">● Live</span> — ':'') +
+      asofText + ' · results publish Wednesdays ~4pm · source: LTA';
+    try{ renderBoard(rounds); }catch(e){ console.error('board',e); }
+    try{ renderTable(rounds); }catch(e){ console.error('table',e); }
+    try{ renderOutlook(rounds); }catch(e){ console.error('outlook',e); }
+    try{
+      if(typeof Chart === 'undefined') throw new Error('Chart.js not loaded');
+      renderChart();
+    }catch(e){
+      console.error('chart',e);
+      document.getElementById('chartNote').textContent = 'Chart could not be displayed — the table below has the full round-by-round figures.';
+    }
+  }
+
+  // controls
+  document.getElementById('catSeg').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    var c = b.dataset.cat;
+    activeCats[c] = !activeCats[c];
+    b.className = activeCats[c] ? 'cat-on-'+c : '';
+    try{ renderChart(); }catch(e){}
+  });
+  document.getElementById('rangeSeg').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    rangeN = parseInt(b.dataset.n,10);
+    document.querySelectorAll('#rangeSeg button').forEach(function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    try{ renderChart(); }catch(e){}
+  });
+
+  // initial render with fallback, then try live
+  renderAll(FALLBACK, false, FALLBACK_ASOF);
+
+  var API = 'https://data.gov.sg/api/action/datastore_search?resource_id=d_69b3380ad7e51aff3a7dcc84eba52b8a&limit=5000';
+  fetch(API).then(function(r){ return r.json(); }).then(function(j){
+    if(!j.success || !j.result || !j.result.records || !j.result.records.length) return;
+    var map = {};
+    j.result.records.forEach(function(rec){
+      var key = rec.month + '#' + rec.bidding_no;
+      if(!map[key]) map[key] = {month:rec.month, bid:parseInt(rec.bidding_no,10)};
+      var cat = (rec.vehicle_class||'').replace('Category ','').trim();
+      if(CATS.indexOf(cat)>-1) map[key][cat] = parseFloat(rec.premium);
+    });
+    // merge baked rounds in case the government feed lags behind published results
+    FALLBACK.forEach(function(f){
+      var k = f.month + '#' + f.bid;
+      if(!map[k]) map[k] = {month:f.month, bid:f.bid, A:f.A, B:f.B, C:f.C, D:f.D, E:f.E};
+    });
+    var rounds = Object.keys(map).map(function(k){ return map[k]; })
+      .filter(function(r){ return CATS.every(function(c){ return typeof r[c]==='number' && !isNaN(r[c]); }); })
+      .sort(function(a,b){ return a.month===b.month ? b.bid-a.bid : (a.month<b.month?1:-1); });
+    if(rounds.length<2) return;
+    var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    rounds.forEach(function(r){
+      var p = r.month.split('-');
+      var mn = MONTHS[parseInt(p[1],10)-1];
+      r.label = mn+' '+p[0]+' · '+(r.bid===1?'1st':'2nd');
+      r.short = mn+"'"+p[0].slice(2)+'·'+r.bid;
+    });
+    renderAll(rounds, true, 'Latest: ' + rounds[0].label + ' bidding');
+  }).catch(function(){ /* fallback already rendered */ });
+})();
+</script>
+<script>
+if('serviceWorker' in navigator){ window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js'); }); }
+</script>
+<!-- Cloudflare Web Analytics: paste your token below and uncomment to activate.
+     Get it free at: Cloudflare dashboard > Web Analytics > Add a site > sgdrives.com
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script>
+-->
+</body>
+</html>
