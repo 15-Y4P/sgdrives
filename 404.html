@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Loan Early Settlement Calculator Singapore (Rule of 78)</title>
+<meta name="description" content="Find out exactly how much it costs to settle your Singapore car loan early using the Rule of 78. Free, instant calculation for any hire-purchase loan.">
+<link rel="canonical" href="https://www.sgdrives.com/rule-78-loan-settlement-calculator/">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<meta property="og:title" content="Car Loan Early Settlement Calculator (Rule of 78)">
+<meta property="og:description" content="Work out your exact early settlement amount for any Singapore car loan, including interest rebate and penalties.">
+<meta property="og:url" content="https://www.sgdrives.com/rule-78-loan-settlement-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.sgdrives.com/assets/og-image.png">
+<meta property="og:site_name" content="SG Drives">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Why is my early settlement amount higher than I expected?","acceptedAnswer":{"@type":"Answer","text":"Most Singapore car loans use the Rule of 78, which allocates more of your total interest to the early months of the loan. When you settle early, the interest rebate you receive is smaller than a straight-line calculation would suggest, and the bank typically retains 20% of the unearned interest as a settlement charge."}},
+{"@type":"Question","name":"What is the 20% settlement fee?","acceptedAnswer":{"@type":"Answer","text":"Under standard Singapore hire-purchase terms, the interest rebate on early settlement is reduced by 20% — the bank keeps one-fifth of the unearned interest. This calculator includes that charge in the final settlement figure."}},
+{"@type":"Question","name":"What is EIR and why is it higher than my flat rate?","acceptedAnswer":{"@type":"Answer","text":"The Effective Interest Rate reflects the true cost of borrowing on a reducing balance. A flat rate charges interest on the full original principal every month even though you are paying it down, so a 2.78% flat rate typically works out to roughly 5%+ EIR."}}
+]}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="/" aria-label="SG Drives home">
+      <span class="logo-plate">SGD</span>
+      <span class="logo-name">SG DRIVES <span>· Ownership tools</span></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="/coe-prices-singapore/">COE</a>
+      <a href="/#tools" aria-current="page">Tools</a>
+      <a href="/services/">Services</a>
+      <a href="/blog/">Guides</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/6580336863" target="_blank" rel="noopener">WhatsApp us</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap-narrow page-head">
+    <div class="eyebrow">Tool 01 — Loan settlement</div>
+    <h1>Rule of 78 Car Loan Settlement Calculator (Singapore)</h1>
+    <p class="lede">Most car loans in Singapore use the Rule of 78 to calculate early settlement, which means the interest you've "saved" by paying early isn't a straight-line refund — it's weighted so you pay more interest in the early years of the loan. This calculator works out your exact settlement figure based on your original loan amount, interest rate, tenure, and the number of instalments you've already paid, so you know precisely what to expect before calling your bank or trading in your car.</p>
+  </div>
+
+  <div class="wrap-narrow section">
+    <div style="margin-bottom:22px;background:#fff;border:1.5px solid #C8102E;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="background:#C8102E;color:#fff;font-family:'Archivo',sans-serif;font-weight:800;padding:3px 11px;border-radius:6px;font-size:13px;letter-spacing:.04em">PROMO</span>
+      <span style="font-weight:600;font-size:15px">Refinancing or buying? Promotional rate of <b style="color:#C8102E">2.28% p.a. flat</b> — all cars, new or used.</span>
+      <a href="https://wa.me/6580336863?text=Hi%20SG%20Drives%2C%20I%27m%20interested%20in%20the%202.28%25%20promo%20rate" target="_blank" rel="noopener" style="color:#C8102E;font-weight:700;text-decoration:underline;text-underline-offset:3px">Contact me now →</a>
+    </div>
+    <div class="tool-card">
+      <form id="r78Form" onsubmit="return false">
+        <div class="form-grid">
+          <div>
+            <label class="f" for="loanAmt">Loan amount (S$)</label>
+            <input class="f" id="loanAmt" type="number" min="1000" step="100" placeholder="e.g. 143000" required>
+          </div>
+          <div>
+            <label class="f" for="flatRate">Flat interest rate (% p.a.)</label>
+            <input class="f" id="flatRate" type="number" min="0" max="10" step="0.01" placeholder="e.g. 2.78" required>
+          </div>
+          <div>
+            <label class="f" for="tenure">Loan tenure (months)</label>
+            <input class="f" id="tenure" type="number" min="12" max="120" step="1" placeholder="e.g. 84">
+            <p class="hint">Max 84 months for most cars; up to 108 possible in some structures.</p>
+          </div>
+          <div>
+            <label class="f" for="paid">Instalments already paid</label>
+            <input class="f" id="paid" type="number" min="0" step="1" placeholder="e.g. 24">
+          </div>
+          <div class="full">
+            <label class="f" for="penaltyPct">Early settlement penalty (% of loan amount) — optional</label>
+            <input class="f" id="penaltyPct" type="number" min="0" max="5" step="0.05" placeholder="e.g. 1">
+            <p class="hint">Some banks charge a penalty as a percentage of the original loan sum on top of the 20% interest-rebate retention. Check your hire-purchase agreement; leave blank if none.</p>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="calcBtn" type="button">Calculate settlement</button>
+          <button class="btn btn-ghost" type="reset" onclick="document.getElementById('r78Results').classList.remove('show')">Reset</button>
+        </div>
+      </form>
+
+      <div class="results" id="r78Results" aria-live="polite">
+        <div class="res-grid">
+          <div class="res hero-res"><div class="k">Early settlement amount</div><div class="v" id="rSettle">—</div></div>
+          <div class="res"><div class="k">Monthly instalment</div><div class="v" id="rMonthly">—</div></div>
+          <div class="res"><div class="k">Effective interest rate (EIR)</div><div class="v" id="rEir">—</div></div>
+        </div>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>Total interest over full tenure (flat)</td><td class="num" id="rTotInt">—</td></tr>
+            <tr><td>Outstanding instalments remaining</td><td class="num" id="rRemain">—</td></tr>
+            <tr><td>Unearned interest (Rule of 78)</td><td class="num" id="rUnearned">—</td></tr>
+            <tr><td>Interest rebate to you (80% of unearned)</td><td class="num" id="rRebate">—</td></tr>
+            <tr><td>Bank's settlement charge (20% of unearned)</td><td class="num" id="rFee">—</td></tr>
+            <tr id="rPenaltyRow" style="display:none"><td>Early settlement penalty</td><td class="num" id="rPenalty">—</td></tr>
+          </tbody>
+        </table>
+        <p class="res-note">Settlement = remaining instalments − unearned interest + 20% charge. Your bank's final quote may differ slightly due to payment dates and admin fees — always request an official redemption statement before committing.</p>
+      </div>
+    </div>
+
+    <div class="cta-panel">
+      <div>
+        <b>Thinking about settling early to move into something new?</b>
+        <p>I can run the full numbers with you — settlement, trade-in, and your next car — in one chat.</p>
+      </div>
+      <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%2C%20I%20used%20the%20Rule%20of%2078%20calculator%20on%20sgdrives.com" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+
+    <div class="faq">
+      <h2>Common questions</h2>
+      <details><summary>Why is my settlement higher than I expected?</summary><p>The Rule of 78 front-loads interest: in a 84-month loan, month 1 carries 84 "parts" of interest and the last month carries just 1. Settle at the halfway mark and you've already paid well over half the total interest — so the rebate is smaller than intuition suggests, before the 20% charge is even applied.</p></details>
+      <details><summary>What exactly is the 20% settlement charge?</summary><p>Under standard Singapore hire-purchase terms, the interest rebate on early settlement is reduced by 20% — the bank retains one-fifth of the unearned interest. This calculator bakes that into the final figure.</p></details>
+      <details><summary>Why is the EIR so much higher than my flat rate?</summary><p>A flat rate charges interest on your full original loan every month, even in the final month when your true outstanding balance is small. The EIR corrects for this by computing the internal rate of return on your actual cash flows — which is why a 2.78% flat rate works out to roughly 5%+ effective.</p></details>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <div><strong style="color:var(--ink)">SG Drives</strong> · Singapore car ownership tools<br>© 2026 sgdrives.com</div>
+    <div class="disclaimer">Tools are provided for reference. Final figures are always determined by your bank, insurer or LTA. Verify important numbers before committing.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/6580336863" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.8 5 2.3 7L4.6 28l6.3-1.6c1.8 1 3.9 1.5 6.1 1.5 6.6 0 12-5.3 12-11.9C29 8.3 22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1 1-3.6-.3-.4c-1.2-1.7-1.9-3.7-1.9-5.8 0-5.4 4.8-9.8 10.6-9.8s10.6 4.4 10.6 9.8-4.8 10.4-10.6 10.4zm5.8-7.3c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.6 5.7 5 3.4 1.4 3.4.9 4 .9.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+(function(){
+  var fmt = function(n){ return 'S$' + n.toLocaleString('en-SG',{minimumFractionDigits:2,maximumFractionDigits:2}); };
+
+  function eir(P, M, T){
+    // Newton-Raphson: solve P = sum(M/(1+r)^t), t=1..T ; annualise r*12
+    if(P<=0||M<=0||T<=0) return 0;
+    var r = 0.005;
+    for(var i=0;i<200;i++){
+      var f=-P, df=0;
+      for(var t=1;t<=T;t++){
+        var d=Math.pow(1+r,t);
+        f += M/d;
+        df -= t*M/(d*(1+r));
+      }
+      var step=f/df;
+      r -= step;
+      if(r<=0) r=1e-9;
+      if(Math.abs(step)<1e-12) break;
+    }
+    return r*12*100;
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', function(){
+    var P = parseFloat(document.getElementById('loanAmt').value);
+    var rate = parseFloat(document.getElementById('flatRate').value);
+    var T = parseInt(document.getElementById('tenure').value,10);
+    var k = parseInt(document.getElementById('paid').value,10);
+    if(!(P>0)||!(rate>=0)||!(T>0)){ alert('Please fill in loan amount, rate and tenure.'); return; }
+    if(!(k>=0)) k=0;
+    if(k>=T){ alert('Instalments paid must be fewer than the total tenure.'); return; }
+
+    var years = T/12;
+    var totalInt = P * (rate/100) * years;
+    var M = (P + totalInt)/T;
+    var remainMonths = T - k;
+    var sumAll = T*(T+1)/2;
+    var sumRemain = remainMonths*(remainMonths+1)/2;
+    var unearned = totalInt * (sumRemain/sumAll);
+    var fee = unearned*0.20;
+    var rebate = unearned - fee;
+    var remainingInstalments = M*remainMonths;
+    var penPct = parseFloat(document.getElementById('penaltyPct').value) || 0;
+    var penalty = P * (penPct/100);
+    var settlement = remainingInstalments - unearned + fee + penalty; // = remaining − 80% of unearned + penalty
+
+    document.getElementById('rSettle').textContent = fmt(settlement);
+    document.getElementById('rMonthly').textContent = fmt(M);
+    document.getElementById('rEir').textContent = eir(P,M,T).toFixed(2)+'% p.a.';
+    document.getElementById('rTotInt').textContent = fmt(totalInt);
+    document.getElementById('rRemain').textContent = remainMonths+' × '+fmt(M)+' = '+fmt(remainingInstalments);
+    document.getElementById('rUnearned').textContent = fmt(unearned);
+    document.getElementById('rRebate').textContent = '− '+fmt(rebate);
+    document.getElementById('rFee').textContent = '+ '+fmt(fee);
+    document.getElementById('rPenaltyRow').style.display = penalty>0 ? '' : 'none';
+    document.getElementById('rPenalty').textContent = '+ '+fmt(penalty)+' ('+penPct+'% of '+fmt(P)+')';
+    document.getElementById('r78Results').classList.add('show');
+  });
+})();
+</script>
+<script>
+if('serviceWorker' in navigator){ window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js'); }); }
+</script>
+<!-- Cloudflare Web Analytics: paste your token below and uncomment to activate.
+     Get it free at: Cloudflare dashboard > Web Analytics > Add a site > sgdrives.com
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script>
+-->
+</body>
+</html>
