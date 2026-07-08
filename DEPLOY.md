@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EV vs Petrol Cost Calculator Singapore — Which Is Cheaper For You?</title>
-<meta name="description" content="Compare EV charging vs petrol running costs in Singapore based on your real monthly mileage, consumption, road tax and current pump and charging prices. Find your breakeven mileage.">
-<link rel="canonical" href="https://www.sgdrives.com/ev-vs-petrol-cost-calculator-singapore/">
+<title>VRN & NCD Appeal Letter Generator Singapore — Plate Transfer + Insurance Letters</title>
+<meta name="description" content="Generate your VRN appeal letter and NCD transfer letter together in one go. Free tool for Singapore car owners transferring plate ownership and insurance discount.">
+<link rel="canonical" href="https://www.sgdrives.com/vrn-ncd-appeal-letter-generator-singapore/">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#14161A">
 <link rel="apple-touch-icon" href="/assets/icon-192.png">
 <link rel="icon" type="image/png" href="/assets/icon-192.png">
-<meta property="og:title" content="EV vs Petrol Cost Calculator Singapore">
-<meta property="og:description" content="See which drivetrain is cheaper for how you actually drive — and the mileage where an EV starts saving.">
-<meta property="og:url" content="https://www.sgdrives.com/ev-vs-petrol-cost-calculator-singapore/">
+<meta property="og:title" content="VRN & NCD Transfer Letter Generator Singapore">
+<meta property="og:description" content="Generate submission-ready VRN appeal and NCD transfer letters in the accepted format. Free, nothing stored.">
+<meta property="og:url" content="https://www.sgdrives.com/vrn-ncd-appeal-letter-generator-singapore/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.sgdrives.com/assets/og-image.png">
 <meta property="og:site_name" content="SG Drives">
@@ -21,35 +21,58 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
-<script src="/assets/chart.umd.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Why do I need two letters when transferring a car?","acceptedAnswer":{"@type":"Answer","text":"Changing the registered owner usually means a VRN appeal for the plate or owner particulars amendment, plus a separate NCD transfer letter to the insurer so the No Claim Discount moves across correctly. Miss the second and the new owner can lose years of accumulated discount."}},
+{"@type":"Question","name":"Can NCD be transferred to anyone?","acceptedAnswer":{"@type":"Answer","text":"Insurers generally allow NCD transfers only between immediate family members (typically spouse, and in some cases parent-child), or from a company vehicle to the primary named driver. Check your insurer's specific rules before submitting."}},
+{"@type":"Question","name":"Is my information stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. This tool runs entirely in your browser — nothing you type is sent to any server or saved."}}
+]}
+</script>
 <style>
-.info-bars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px}
-@media(max-width:760px){.info-bars{grid-template-columns:1fr}}
-.ibar{background:var(--paper-raise);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
-.ibar .t{font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sg-red);margin-bottom:8px}
-.ibar .row{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:4px 0;border-bottom:1px dashed var(--line)}
-.ibar .row:last-of-type{border-bottom:none}
-.ibar .row b{font-variant-numeric:tabular-nums}
-.ibar .upd{font-size:11.5px;color:var(--ink-soft);margin-top:8px}
-.unit-row{display:flex;gap:8px}
-.unit-row input{flex:1;min-width:0}
-.unit-row select{flex:0 0 128px}
-.slider-wrap{margin:6px 0 4px}
-input[type=range]{width:100%;accent-color:var(--sg-red);height:34px}
-.km-read{font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;font-variant-numeric:tabular-nums}
-.verdict{
-  margin-top:24px;border-radius:12px;padding:20px 24px;color:#fff;
-  font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);line-height:1.35;
+.sheet{margin-top:22px}
+.sheet-tag{
+  display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--ink);
+  padding:5px 12px;border-radius:7px 7px 0 0;
 }
-.verdict.ev{background:#0B7A3E}
-.verdict.petrol{background:var(--sg-red)}
-.verdict small{display:block;font-family:'IBM Plex Sans';font-weight:500;font-size:13.5px;opacity:.85;margin-top:6px}
-.chart-wrap2{position:relative;height:320px;margin-top:22px}
-@media(max-width:700px){.chart-wrap2{height:260px}}
-.shortcuts{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.chargers-note{background:var(--plate);color:#F2F3EF;border-radius:12px;padding:18px 22px;margin-top:14px;font-size:14px;display:flex;gap:10px 26px;flex-wrap:wrap;align-items:baseline}
-.chargers-note b{font-family:'Archivo',sans-serif;font-size:20px;color:#4ADE80}
-.chargers-note span{color:#B9BCB4}
+.sheet .letter{margin-top:0;border-radius:0 10px 10px 10px;box-shadow:0 12px 30px -20px rgba(20,22,26,.3);white-space:normal;font-size:15px;line-height:1.75}
+.letter .lrow{display:flex;gap:8px;margin-bottom:6px}
+.letter .lrow .ll{font-weight:700;min-width:110px}
+.letter .lrow .lc{flex:none}
+.letter .lrow .lv{flex:1}
+.letter .lrow .lv b{font-weight:700}
+.letter .lrow .lv u{text-underline-offset:3px}
+.letter p{margin:0 0 14px}
+.letter .re-line{font-style:italic;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.letter .sig{margin-top:44px}
+.letter .sig .line{border-bottom:1.5px dotted #555;width:240px;height:44px;margin-bottom:4px}
+.letter .sig .lbl{font-weight:700;margin-bottom:22px}
+.sheet-actions{margin-top:10px;display:flex;gap:10px}
+.sheet-actions button{font-size:13.5px;padding:9px 16px}
+@media print{
+  body.print-vrn #sheetNcd, body.print-ncd #sheetVrn{display:none!important}
+  .sheet{margin:0}
+  .sheet-tag,.sheet-actions{display:none!important}
+  .sheet .letter{border:none;box-shadow:none;border-radius:0;padding:24pt 8pt 0;font-size:12pt;line-height:1.85}
+  .sheet{break-after:page;page-break-after:always}
+  .sheet:last-of-type{break-after:auto;page-break-after:auto}
+}
+</style>
+<style>
+.letter{white-space:normal;font-size:15px}
+.lrow{display:flex;gap:0;margin-bottom:10px}
+.lrow .lk{flex:0 0 92px;font-weight:700}
+.lrow .lc{flex:0 0 18px}
+.letter p{margin:0 0 14px}
+.letter .sig{margin:34px 0 26px}
+.letter .sigline{width:230px;border-bottom:1.5px dotted #555;height:44px;margin-bottom:6px}
+.letter .frows{margin-top:8px}
+.letter .frows .lrow{margin-bottom:8px}
+.letter .frows .lk{flex-basis:110px}
+u i, i u{font-style:italic}
+@media print{
+  .letter .sigline{height:52px}
+}
 </style>
 </head>
 <body>
@@ -71,141 +94,121 @@ input[type=range]{width:100%;accent-color:var(--sg-red);height:34px}
 </header>
 
 <main>
-  <div class="wrap-narrow page-head" style="padding-bottom:28px">
-    <div class="eyebrow">Tool 05 — EV vs Petrol</div>
-    <h1 style="margin-bottom:6px">EV vs Petrol: which is cheaper for you?</h1>
-    <p class="asof" style="margin:0">Running cost comparison on your real numbers · excludes servicing &amp; maintenance</p>
+  <div class="wrap-narrow page-head">
+    <div class="eyebrow">Tool 03 — Ownership letters</div>
+    <h1>VRN Appeal &amp; NCD Transfer Letter Generator (Singapore)</h1>
+    <p class="lede">Changing the registered owner of a car almost always means two letters need to go out, not one — a VRN appeal for the owner particulars amendment, and an NCD transfer letter to the insurer so your No Claim Discount moves across correctly. Miss the second one and the new owner can lose years of accumulated discount. This tool generates both letters together from the same set of details, so nothing falls through the cracks. Everything runs in your browser — nothing is stored or sent anywhere.</p>
   </div>
 
   <div class="wrap-narrow section">
-
-    <!-- LIVE PRICE INFO BARS -->
-    <div class="info-bars">
-      <div class="ibar">
-        <div class="t">Petrol prices (listed pump)</div>
-        <div class="row"><span>95-octane</span><b>from S$3.46/L</b></div>
-        <div class="row"><span>98-octane</span><b>from S$3.97/L</b></div>
-        <div class="row"><span>Effective with card discounts</span><b>~S$2.66–2.75/L</b></div>
-        <div class="upd">Updated 6 Jul 2026 · before station promos · varies by brand</div>
-      </div>
-      <div class="ibar">
-        <div class="t">EV charging rates</div>
-        <div class="row"><span>Home (SP tariff + GST)</span><b>~S$0.30/kWh</b></div>
-        <div class="row"><span>Public AC (median)</span><b>~S$0.69/kWh</b></div>
-        <div class="row"><span>Public DC fast (median)</span><b>~S$0.80/kWh</b></div>
-        <div class="upd">Updated 22 Jun 2026 · public network medians · cheapest public AC ~S$0.45–0.55</div>
-      </div>
-    </div>
-
-    <!-- CALCULATOR -->
     <div class="tool-card">
-      <div class="form-grid">
-        <div class="full">
-          <label class="f" for="kmSlider">Monthly mileage — <span class="km-read" id="kmRead">1,200 km</span> <span id="kmYear" style="font-size:14px;font-weight:600;color:var(--ink-soft)">(14,400 km/year)</span></label>
-          <div class="slider-wrap">
-            <input type="range" id="kmSlider" min="100" max="4000" step="50" value="1200" aria-label="Monthly mileage in km">
-          </div>
-        </div>
-        <div>
-          <label class="f" for="petCons">Petrol consumption</label>
-          <div class="unit-row">
-            <input class="f" id="petCons" type="number" min="1" step="0.1" value="12">
-            <select class="f" id="petUnit">
-              <option value="kmpl">km/L</option>
-              <option value="lp100">L/100km</option>
+      <form id="ltrForm" onsubmit="return false">
+        <div class="form-grid">
+          <div>
+            <label class="f" for="ltrType">Letters to generate</label>
+            <select class="f" id="ltrType">
+              <option value="both">Both — VRN appeal + NCD transfer</option>
+              <option value="vrn">VRN appeal letter only</option>
+              <option value="ncd">NCD transfer letter only</option>
             </select>
           </div>
-        </div>
-        <div>
-          <label class="f" for="evCons">EV efficiency</label>
-          <div class="unit-row">
-            <input class="f" id="evCons" type="number" min="0.5" step="0.1" value="6">
-            <select class="f" id="evUnit">
-              <option value="kmpkwh">km/kWh</option>
-              <option value="kwhp100">kWh/100km</option>
+          <div>
+            <label class="f" for="ltrDate">Letter date</label>
+            <input class="f" id="ltrDate" type="date">
+          </div>
+          <div>
+            <label class="f" for="carPlate">Vehicle registration no.</label>
+            <input class="f" id="carPlate" type="text" placeholder="e.g. SGD8888Z" style="text-transform:uppercase">
+          </div>
+          <div>
+            <label class="f" for="relationship">Relationship of transfer</label>
+            <select class="f" id="relationship">
+              <option>Spouse</option>
+              <option>Parent to Child</option>
+              <option>Child to Parent</option>
+              <option>Sibling</option>
+              <option>Company to Director</option>
+              <option>Director to Company</option>
+              <option>Others</option>
             </select>
           </div>
+          <div>
+            <label class="f" for="curName">Current owner / transferor name</label>
+            <input class="f" id="curName" type="text">
+          </div>
+          <div>
+            <label class="f" for="curId">Current owner NRIC / UEN</label>
+            <input class="f" id="curId" type="text" style="text-transform:uppercase">
+            <p class="hint">NRIC (S/T/F/G/M) or company UEN — detected automatically.</p>
+          </div>
+          <div>
+            <label class="f" for="newName">New owner / recipient name</label>
+            <input class="f" id="newName" type="text">
+          </div>
+          <div>
+            <label class="f" for="newId">New owner NRIC / UEN</label>
+            <input class="f" id="newId" type="text" style="text-transform:uppercase">
+          </div>
+          <div>
+            <label class="f" for="ncdPct">NCD percentage (for NCD letter)</label>
+            <select class="f" id="ncdPct">
+              <option>50%</option><option>40%</option><option>30%</option><option>20%</option><option>10%</option><option>0%</option>
+            </select>
+          </div>
+          <div>
+            <label class="f" for="insurer">Insurer name (for NCD letter)</label>
+            <input class="f" id="insurer" type="text" placeholder="e.g. Income / NTUC / Other">
+          </div>
+          <div>
+            <label class="f" for="vsaNo">VSA no. (optional)</label>
+            <input class="f" id="vsaNo" type="text">
+          </div>
+          <div>
+            <label class="f" for="coeNo">COE no. (optional)</label>
+            <input class="f" id="coeNo" type="text">
+          </div>
         </div>
-        <div>
-          <label class="f" for="petPrice">Petrol price (S$/L)</label>
-          <input class="f" id="petPrice" type="number" min="0.5" step="0.01" value="2.70">
-          <p class="hint">Your effective price after card discounts.</p>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="genBtn" type="button">Generate letters</button>
+          <button class="btn btn-ghost" id="copyBtn" type="button">Copy text</button>
+          <button class="btn btn-ghost" type="button" onclick="window.print()">Print both / save PDF</button>
         </div>
-        <div>
-          <label class="f" for="evPrice">Charging cost (S$/kWh)</label>
-          <input class="f" id="evPrice" type="number" min="0.05" step="0.01" value="0.69">
-          <p class="hint">Home ~0.30 · public AC ~0.69 · DC ~0.80.</p>
-        </div>
-        <div>
-          <label class="f" for="petTax">Petrol car road tax (S$/yr)</label>
-          <input class="f" id="petTax" type="number" min="0" step="1" placeholder="e.g. 744">
-        </div>
-        <div>
-          <label class="f" for="evTax">EV road tax incl. AFC (S$/yr)</label>
-          <input class="f" id="evTax" type="number" min="0" step="1" placeholder="e.g. 1400">
-        </div>
-        <div>
-          <label class="f" for="petDep">Petrol car depreciation (S$/yr) — optional</label>
-          <input class="f" id="petDep" type="number" min="0" step="100" placeholder="e.g. 14000">
-          <p class="hint">From the <a href="/car-depreciation-calculator-singapore/" style="color:var(--sg-red);font-weight:600">depreciation calculator</a>.</p>
-        </div>
-        <div>
-          <label class="f" for="evDep">EV depreciation (S$/yr) — optional</label>
-          <input class="f" id="evDep" type="number" min="0" step="100" placeholder="e.g. 16000">
-          <p class="hint">Fill both to compare true total cost of ownership.</p>
-        </div>
-      </div>
+      </form>
 
-      <div class="verdict ev" id="verdict" aria-live="polite"></div>
-
-      <div class="results show" style="margin-top:22px">
-        <div class="res-grid">
-          <div class="res"><div class="k">EV running cost</div><div class="v" id="evMo">—</div><div class="k" style="margin-top:4px;text-transform:none;letter-spacing:0" id="evYrC">—</div></div>
-          <div class="res"><div class="k">Petrol running cost</div><div class="v" id="petMo">—</div><div class="k" style="margin-top:4px;text-transform:none;letter-spacing:0" id="petYrC">—</div></div>
-          <div class="res hero-res"><div class="k">You save</div><div class="v" id="saveMo">—</div><div class="k" style="margin-top:4px;text-transform:none;letter-spacing:0;color:#A7AAA2" id="saveYrC">—</div></div>
+      <div class="results" id="ltrResults" aria-live="polite">
+        <div class="sheet" id="sheetVrn">
+          <span class="sheet-tag">Letter 1 · VRN Appeal</span>
+          <div class="letter" id="vrnOut"></div>
+          <div class="sheet-actions no-print">
+            <button class="btn btn-ghost" type="button" onclick="printSheet('vrn')">Print this letter</button>
+            <button class="btn btn-ghost" type="button" onclick="copySheet('vrnOut')">Copy</button>
+          </div>
         </div>
-        <table class="breakdown">
-          <tbody>
-            <tr><td>EV energy cost per km</td><td class="num" id="evKm">—</td></tr>
-            <tr><td>Petrol fuel cost per km</td><td class="num" id="petKm">—</td></tr>
-            <tr><td>Annual saving at this mileage</td><td class="num" id="saveYr">—</td></tr>
-            <tr><td>Breakeven mileage (EV starts saving)</td><td class="num" id="breakeven">—</td></tr>
-            <tr id="tcoHead" style="display:none"><td colspan="2" style="font-weight:700;padding-top:16px">True cost incl. depreciation</td></tr>
-            <tr id="tcoEvRow" style="display:none"><td>EV total (energy + road tax + depreciation)</td><td class="num" id="tcoEv">—</td></tr>
-            <tr id="tcoPetRow" style="display:none"><td>Petrol total (fuel + road tax + depreciation)</td><td class="num" id="tcoPet">—</td></tr>
-            <tr id="tcoDiffRow" style="display:none"><td><b>Real difference: EV vs ICE</b></td><td class="num" id="tcoDiff">—</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="chart-wrap2"><canvas id="evChart"></canvas></div>
-      <p class="res-note">Comparison covers energy cost and road tax only — it excludes servicing, maintenance, insurance, depreciation and COE differences. Drag the mileage slider to see how the gap moves with your driving.</p>
-
-      <div class="shortcuts">
-        <a class="btn btn-ghost" href="https://onemotoring.lta.gov.sg/content/onemotoring/home/digitalservices/enquire-road-tax-expiry-date.html" target="_blank" rel="noopener">Enquire Road Tax (LTA) ↗</a>
-        <a class="btn btn-ghost" href="https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/upfront-vehicle-costs/fuel-cost-calculator.html" target="_blank" rel="noopener">Enquire Fuel Consumption (LTA) ↗</a>
-      </div>
-
-      <div class="chargers-note">
-        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;letter-spacing:.14em;color:#A7AAA2">SG CHARGING NETWORK</span>
-        <span><b>12,000+</b> charging points islandwide</span>
-        <span>SP Mobility 3,300+ · Charge+ 5,300+ · CDG ENGIE 2,000+ · Shell Recharge &amp; more</span>
-        <span>National target: <b style="color:#F2F3EF">60,000</b> by 2030</span>
+        <div class="sheet" id="sheetNcd">
+          <span class="sheet-tag">Letter 2 · NCD Transfer</span>
+          <div class="letter" id="ncdOut"></div>
+          <div class="sheet-actions no-print">
+            <button class="btn btn-ghost" type="button" onclick="printSheet('ncd')">Print this letter</button>
+            <button class="btn btn-ghost" type="button" onclick="copySheet('ncdOut')">Copy</button>
+          </div>
+        </div>
+        <p class="res-note no-print">Printing both gives one letter per page, clean-cut. Review names and ID numbers carefully before submitting — they'll be matched against official records exactly as written.</p>
       </div>
     </div>
 
     <div class="cta-panel">
       <div>
-        <b>Thinking of making the switch to electric?</b>
-        <p>Run your exact numbers with me — including the purchase price, COE and trade-in side that this calculator doesn't cover.</p>
+        <b>Transferring ownership or your NCD as part of a car change?</b>
+        <p>I handle these submissions weekly — happy to sanity-check your paperwork before it goes out.</p>
       </div>
-      <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%20SG%20Drives%2C%20I%20compared%20EV%20vs%20petrol%20costs%20on%20sgdrives.com%20and%20want%20to%20discuss" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%2C%20I%20used%20the%20letter%20generator%20on%20sgdrives.com" target="_blank" rel="noopener">Chat on WhatsApp</a>
     </div>
 
     <div class="faq">
-      <details><summary>Why doesn't this include servicing and maintenance?</summary><p>Servicing costs vary hugely by model, workshop and package — bundling a guess into the math would make the comparison less honest, not more. EVs generally cost less to service (no oil, fewer moving parts, regen braking reduces brake wear), so if the calculator already shows the EV cheaper on energy alone, maintenance typically widens the gap.</p></details>
-      <details><summary>Which charging price should I use?</summary><p>Use the rate you'd realistically charge at most of the time. Home charging (~S$0.30/kWh) if you have a landed property or condo charger; the public AC median (~S$0.69/kWh) if you rely on HDB or mall chargers; DC fast (~S$0.80/kWh) only if you're a heavy fast-charge user.</p></details>
-      <details><summary>Where do I find my road tax figures?</summary><p>Use the Enquire Road Tax shortcut above for your current vehicle, or check OneMotoring's tax structure pages when comparing a car you're considering. Note EVs pay an Additional Flat Component on top of the power-based road tax.</p></details>
+      <h2>Common questions</h2>
+      <details><summary>Who can receive my NCD?</summary><p>Insurers generally allow NCD transfers only between immediate family members — most commonly spouses — or from a company vehicle to its primary named driver. Rules vary by insurer, so confirm eligibility before submitting.</p></details>
+      <details><summary>Where do these letters go?</summary><p>The VRN appeal goes to the party handling the ownership amendment (typically via your dealer or the relevant motor underwriting department), and the NCD transfer letter goes to your motor insurer. Your dealer or agent can usually submit both for you.</p></details>
+      <details><summary>Is my information stored?</summary><p>No. The letters are generated entirely in your browser. Nothing you type here is transmitted or saved anywhere.</p></details>
     </div>
   </div>
 </main>
@@ -213,7 +216,7 @@ input[type=range]{width:100%;accent-color:var(--sg-red);height:34px}
 <footer class="site">
   <div class="wrap foot">
     <div><strong style="color:var(--ink)">SG Drives</strong> · Singapore car ownership tools<br>© 2026 sgdrives.com</div>
-    <div class="disclaimer">Price references are drawn from published market data on the dates indicated and change over time. Tools are for reference only — verify current prices before deciding.</div>
+    <div class="disclaimer">Tools are provided for reference. Final figures are always determined by your bank, insurer or LTA. Verify important numbers before committing.</div>
   </div>
 </footer>
 
@@ -222,140 +225,139 @@ input[type=range]{width:100%;accent-color:var(--sg-red);height:34px}
 </a>
 
 <script>
+var printSheet, copySheet;
 (function(){
-  var $ = function(id){ return document.getElementById(id); };
-  var fmt = function(n){ return 'S$' + n.toLocaleString('en-SG',{minimumFractionDigits:2,maximumFractionDigits:2}); };
-  var fmt0 = function(n){ return 'S$' + Math.round(n).toLocaleString('en-SG'); };
-  var chart = null;
-
-  function petrolPerKm(){
-    var v = parseFloat($('petCons').value)||0, price = parseFloat($('petPrice').value)||0;
-    if(v<=0) return 0;
-    var lPerKm = $('petUnit').value==='kmpl' ? 1/v : v/100;
-    return lPerKm * price;
+  function esc(x){ return String(x||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function isCompany(id){
+    id = (id||'').trim().toUpperCase();
+    return id !== '' && !/^[STFGM]\d{7}[A-Z]$/.test(id);
   }
-  function evPerKm(){
-    var v = parseFloat($('evCons').value)||0, price = parseFloat($('evPrice').value)||0;
-    if(v<=0) return 0;
-    var kwhPerKm = $('evUnit').value==='kmpkwh' ? 1/v : v/100;
-    return kwhPerKm * price;
+  function ordDate(v){
+    var d = v ? new Date(v) : new Date();
+    var n = d.getDate(), suf = 'th';
+    if(n%10===1 && n%100!==11) suf='st';
+    else if(n%10===2 && n%100!==12) suf='nd';
+    else if(n%10===3 && n%100!==13) suf='rd';
+    var M = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    return n + suf + ' ' + M[d.getMonth()] + ' ' + d.getFullYear();
   }
+  function val(id){ return document.getElementById(id).value.trim(); }
 
-  function calc(){
-    var km = parseInt($('kmSlider').value,10);
-    $('kmRead').textContent = km.toLocaleString('en-SG') + ' km';
-    $('kmYear').textContent = '(' + (km*12).toLocaleString('en-SG') + ' km/year)';
-    var pKm = petrolPerKm(), eKm = evPerKm();
-    var pTax = (parseFloat($('petTax').value)||0)/12;
-    var eTax = (parseFloat($('evTax').value)||0)/12;
-    var pMo = pKm*km + pTax;
-    var eMo = eKm*km + eTax;
-    var save = pMo - eMo;
-
-    $('evKm').textContent = fmt(eKm) + '/km';
-    $('petKm').textContent = fmt(pKm) + '/km';
-    $('evMo').textContent = fmt0(eMo) + '/mo';
-    $('petMo').textContent = fmt0(pMo) + '/mo';
-    $('evYrC').textContent = fmt0(eMo*12) + ' per year';
-    $('petYrC').textContent = fmt0(pMo*12) + ' per year';
-    $('saveMo').textContent = (save>=0?'':'−') + fmt0(Math.abs(save)) + '/mo';
-    $('saveYrC').textContent = (save>=0?'':'−') + fmt0(Math.abs(save)*12) + ' per year';
-    $('saveYr').textContent = (save>=0?'':'−') + fmt0(Math.abs(save)*12);
-
-    // true TCO incl. depreciation (both fields required)
-    var pDep = parseFloat($('petDep').value)||0;
-    var eDep = parseFloat($('evDep').value)||0;
-    var showTco = pDep>0 && eDep>0;
-    ['tcoHead','tcoEvRow','tcoPetRow','tcoDiffRow'].forEach(function(id){ $(id).style.display = showTco?'':'none'; });
-    if(showTco){
-      var tEv = eMo + eDep/12, tPet = pMo + pDep/12;
-      var tDiff = tPet - tEv;
-      $('tcoEv').textContent = fmt0(tEv)+'/mo · '+fmt0(tEv*12)+'/yr';
-      $('tcoPet').textContent = fmt0(tPet)+'/mo · '+fmt0(tPet*12)+'/yr';
-      $('tcoDiff').textContent = (tDiff>=0?'EV cheaper by ':'Petrol cheaper by ')+fmt0(Math.abs(tDiff))+'/mo ('+fmt0(Math.abs(tDiff)*12)+'/yr)';
-    }
-
-    // breakeven: km where eMo == pMo → km = (eTax - pTax)/(pKm - eKm)
-    var be = null;
-    if(pKm > eKm){
-      be = Math.max(0, (eTax - pTax)/(pKm - eKm));
-      $('breakeven').textContent = be===0 ? 'EV cheaper from the first km' : '~'+Math.round(be).toLocaleString('en-SG')+' km/month';
-    } else {
-      $('breakeven').textContent = 'Petrol cheaper per km at these prices';
-    }
-
-    var v = $('verdict');
-    if(save > 0){
-      v.className = 'verdict ev';
-      v.innerHTML = 'At '+km.toLocaleString('en-SG')+' km/month, the <u>EV is cheaper</u> by '+fmt0(save)+'/month ('+fmt0(save*12)+'/year).' +
-        '<small>Energy + road tax only — servicing, insurance and purchase price not included.</small>';
-    } else if(save < 0){
-      v.className = 'verdict petrol';
-      v.innerHTML = 'At '+km.toLocaleString('en-SG')+' km/month, <u>petrol is cheaper</u> by '+fmt0(-save)+'/month.' +
-        '<small>' + (be && be>0 ? 'Drive above ~'+Math.round(be).toLocaleString('en-SG')+' km/month and the EV takes over.' : 'At these prices the EV does not overtake on energy cost alone.') + '</small>';
-    } else {
-      v.className = 'verdict ev';
-      v.innerHTML = 'Dead even at '+km.toLocaleString('en-SG')+' km/month.';
-    }
-
-    drawChart(pKm, eKm, pTax, eTax, km, be);
-  }
-
-  function drawChart(pKm, eKm, pTax, eTax, km, be){
-    if(typeof Chart === 'undefined') return;
-    var maxKm = 4000, step = 100, labels = [], pData = [], eData = [];
-    for(var x=0; x<=maxKm; x+=step){
-      labels.push(x);
-      pData.push(pKm*x + pTax);
-      eData.push(eKm*x + eTax);
-    }
-    var cfg = {
-      type:'line',
-      data:{labels:labels, datasets:[
-        {label:'Petrol / month', data:pData, borderColor:'#C8102E', backgroundColor:'#C8102E', borderWidth:2.5, pointRadius:0, tension:0},
-        {label:'EV / month', data:eData, borderColor:'#0B7A3E', backgroundColor:'#0B7A3E', borderWidth:2.5, pointRadius:0, tension:0},
-        {label:'Your mileage', data:labels.map(function(x){ return x===Math.round(km/step)*step ? Math.max(pKm*x+pTax, eKm*x+eTax) : null; }),
-         borderColor:'#14161A', backgroundColor:'#14161A', pointRadius:5, pointStyle:'rectRot', showLine:false}
-      ]},
-      options:{
-        responsive:true, maintainAspectRatio:false, animation:false,
-        interaction:{mode:'index', intersect:false},
-        plugins:{
-          legend:{labels:{font:{family:'IBM Plex Sans', size:12}, usePointStyle:true, boxWidth:8}},
-          tooltip:{
-            backgroundColor:'#14161A', padding:10, cornerRadius:8,
-            callbacks:{
-              title:function(items){ return items[0].label + ' km/month'; },
-              label:function(ctx){ return ctx.dataset.label==='Your mileage' ? null : ' '+ctx.dataset.label+': S$'+Math.round(ctx.parsed.y).toLocaleString('en-SG'); }
-            }
-          }
-        },
-        scales:{
-          x:{title:{display:true,text:'km per month',font:{family:'IBM Plex Sans',size:11}},grid:{display:false},ticks:{maxTicksLimit:9,font:{size:11}}},
-          y:{title:{display:true,text:'S$ per month',font:{family:'IBM Plex Sans',size:11}},grid:{color:'#E7E9E2'},ticks:{font:{size:11},callback:function(v){return '$'+v;}}}
-        }
-      }
+  function relRe(rel){
+    var map = {
+      'Spouse':'between Spouses',
+      'Parent to Child':'from Parent to Child',
+      'Child to Parent':'from Child to Parent',
+      'Sibling':'between Siblings',
+      'Company to Director':'from Company to Director',
+      'Director to Company':'from Director to Company'
     };
-    if(chart){ chart.data = cfg.data; chart.update(); }
-    else { chart = new Chart($('evChart'), cfg); }
+    return map[rel] ? 'Transfer of NCD ' + map[rel] : 'Transfer of NCD';
   }
 
-  ['kmSlider','petCons','petUnit','evCons','evUnit','petPrice','evPrice','petTax','evTax','petDep','evDep'].forEach(function(id){
-    $(id).addEventListener('input', calc);
-    $(id).addEventListener('change', calc);
+  function parts(){
+    var corp = isCompany(val('curId'));
+    return {
+      date: ordDate(document.getElementById('ltrDate').value),
+      plate: val('carPlate').toUpperCase(),
+      rel: document.getElementById('relationship').value,
+      curName: val('curName'), curId: val('curId').toUpperCase(),
+      newName: val('newName'), newId: val('newId').toUpperCase(),
+      ncd: document.getElementById('ncdPct').value,
+      insurer: val('insurer') || 'Other',
+      vsa: val('vsaNo'), coe: val('coeNo'),
+      corp: corp,
+      I: corp?'We':'I', we: corp?'we':'I', my: corp?'our':'my'
+    };
+  }
+
+  function head(p, reText){
+    return '<div class="lrow"><span class="lk">Date</span><span class="lc">:</span><span class="lv"><b><u>'+esc(p.date)+'</u></b></span></div>'+
+      '<div class="lrow"><span class="lk">To</span><span class="lc">:</span><span class="lv"><b><u>Motor Underwriting Department</u></b></span></div>'+
+      '<div class="lrow" style="margin-bottom:24px"><span class="lk">Re</span><span class="lc">:</span><span class="lv"><b><u><i>'+reText+'</i></u></b></span></div>';
+  }
+
+  function sigBlock(p){
+    return '<p style="margin-top:26px">Yours sincerely,</p>'+
+      '<div class="sig"><div class="sigline"></div><b>Signature</b></div>'+
+      '<div class="frows">'+
+      '<div class="lrow"><span class="lk">Name</span><span class="lc">:</span><span class="lv">'+esc(p.curName)+'</span></div>'+
+      '<div class="lrow"><span class="lk">NRIC / UEN</span><span class="lc">:</span><span class="lv">'+esc(p.curId)+'</span></div>'+
+      '<div class="lrow"><span class="lk">Date</span><span class="lc">:</span><span class="lv">'+esc(p.date)+'</span></div>'+
+      '</div>';
+  }
+
+  function buildNcd(p){
+    return head(p, esc(relRe(p.rel)))+
+      '<p>'+p.I+', the registered owner of car bearing registration no. <b>'+esc(p.plate)+'</b> with NCD <b>'+esc(p.ncd)+'</b>.</p>'+
+      '<p>Car was insured with <b>'+esc(p.insurer)+'</b> (Insurance Company).<br>'+
+      p.I+' confirm that '+p.we.toLowerCase()+' have never made any insurance claim on this vehicle.</p>'+
+      '<p>'+p.I+' hereby would like to transfer the NCD to <b>'+esc(p.newName)+'</b> (NRIC/UEN <b>'+esc(p.newId)+'</b>).</p>'+
+      '<p>'+p.I+' understand that NCD cannot be transferred back.</p>'+
+      '<p>'+p.I+' confirm the above information to be true &amp; accurate.</p>'+
+      sigBlock(p);
+  }
+
+  function buildVrn(p){
+    var refs = '';
+    if(p.vsa) refs += '<div class="lrow"><span class="lk" style="flex-basis:140px">VSA No</span><span class="lc">:</span><span class="lv">'+esc(p.vsa)+'</span></div>';
+    if(p.coe) refs += '<div class="lrow"><span class="lk" style="flex-basis:140px">COE No</span><span class="lc">:</span><span class="lv">'+esc(p.coe)+'</span></div>';
+    return head(p, 'Amendment of Owner Particulars &mdash; Vehicle No. '+esc(p.plate))+
+      '<p>'+p.I+', the registered owner of vehicle bearing registration no. <b>'+esc(p.plate)+'</b>, would like to request an amendment of the registered owner particulars as follows:</p>'+
+      '<div class="frows" style="margin-bottom:16px">'+
+      '<div class="lrow"><span class="lk" style="flex-basis:140px">Current owner</span><span class="lc">:</span><span class="lv"><b>'+esc(p.curName)+'</b> ('+esc(p.curId)+')</span></div>'+
+      '<div class="lrow"><span class="lk" style="flex-basis:140px">Amended owner</span><span class="lc">:</span><span class="lv"><b>'+esc(p.newName)+'</b> ('+esc(p.newId)+')</span></div>'+
+      '<div class="lrow"><span class="lk" style="flex-basis:140px">Relationship</span><span class="lc">:</span><span class="lv">'+esc(p.rel)+'</span></div>'+
+      refs+'</div>'+
+      '<p>'+p.I+' would appreciate your assistance in effecting this amendment at your earliest convenience. Please contact '+(p.corp?'us':'me')+' should any further documentation be required.</p>'+
+      '<p>'+p.I+' confirm the above information to be true &amp; accurate.</p>'+
+      sigBlock(p);
+  }
+
+  document.getElementById('genBtn').addEventListener('click', function(){
+    if(!val('carPlate') || !val('curName') || !val('newName')){
+      alert('Please fill in at least the vehicle number, current owner and new owner names.');
+      return;
+    }
+    var p = parts();
+    var type = document.getElementById('ltrType').value;
+    document.getElementById('vrnOut').innerHTML = buildVrn(p);
+    document.getElementById('ncdOut').innerHTML = buildNcd(p);
+    document.getElementById('sheetVrn').style.display = (type==='ncd') ? 'none' : '';
+    document.getElementById('sheetNcd').style.display = (type==='vrn') ? 'none' : '';
+    document.getElementById('ltrResults').classList.add('show');
   });
 
-  // sensible unit defaults when toggling
-  $('petUnit').addEventListener('change', function(){
-    $('petCons').value = this.value==='kmpl' ? 12 : 8.3;
-    calc();
-  });
-  $('evUnit').addEventListener('change', function(){
-    $('evCons').value = this.value==='kmpkwh' ? 6 : 16.7;
-    calc();
+  function doCopy(txt){
+    if(!txt){ alert('Generate the letters first.'); return; }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ alert('Copied to clipboard.'); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+      alert('Copied to clipboard.');
+    }
+  }
+
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var showA = document.getElementById('sheetVrn').style.display !== 'none';
+    var showB = document.getElementById('sheetNcd').style.display !== 'none';
+    var a = document.getElementById('vrnOut').innerText;
+    var b = document.getElementById('ncdOut').innerText;
+    doCopy([showA?a:'', showB?b:''].filter(Boolean).join('\n\n\n'));
   });
 
-  calc();
+  copySheet = function(id){ doCopy(document.getElementById(id).innerText); };
+
+  printSheet = function(which){
+    if(!document.getElementById('vrnOut').innerHTML && !document.getElementById('ncdOut').innerHTML){
+      alert('Generate the letters first.'); return;
+    }
+    document.body.classList.add('print-'+which);
+    window.print();
+    setTimeout(function(){ document.body.classList.remove('print-'+which); }, 300);
+  };
 })();
 </script>
 <script>

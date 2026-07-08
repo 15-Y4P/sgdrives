@@ -1,26 +1,106 @@
-// SG Drives service worker — cache core assets, network-first for pages & live data
-var CACHE = 'sgdrives-v2';
-var CORE = ['/', '/assets/site.css', '/assets/chart.umd.js', '/assets/icon-192.png', '/manifest.webmanifest'];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COE Results — Jun 2026, 2nd Bidding: What Moved & What It Means | SG Drives</title>
+<meta name="description" content="Breakdown of the latest Singapore COE bidding results — category-by-category changes, what drove them, and what it means if you're buying soon.">
+<link rel="canonical" href="https://www.sgdrives.com/blog/coe-results-jun-2026-2nd/">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<meta property="og:title" content="COE Results — Jun 2026 2nd Bidding: What Moved & What It Means">
+<meta property="og:description" content="Category-by-category breakdown of the latest COE bidding results and what it means for buyers.">
+<meta property="og:url" content="https://www.sgdrives.com/blog/coe-results-jun-2026-2nd/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://www.sgdrives.com/assets/og-image.png">
+<meta property="og:site_name" content="SG Drives">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+.article{max-width:720px}
+.article h2{margin-top:36px}
+.article p{margin-bottom:16px}
+.article .meta{font-size:14px;color:var(--ink-soft);margin-bottom:8px}
+.article ul{margin:0 0 18px 20px}
+.article li{margin-bottom:8px}
+.pullbar{background:var(--paper-raise);border:1px solid var(--line);border-left:4px solid var(--sg-red);border-radius:0 10px 10px 0;padding:16px 20px;margin:22px 0;font-size:15px}
+</style>
+</head>
+<body>
 
-self.addEventListener('install', function(e){
-  e.waitUntil(caches.open(CACHE).then(function(c){ return c.addAll(CORE); }).then(function(){ return self.skipWaiting(); }));
-});
-self.addEventListener('activate', function(e){
-  e.waitUntil(caches.keys().then(function(keys){
-    return Promise.all(keys.filter(function(k){ return k!==CACHE; }).map(function(k){ return caches.delete(k); }));
-  }).then(function(){ return self.clients.claim(); }));
-});
-self.addEventListener('fetch', function(e){
-  var url = new URL(e.request.url);
-  if(e.request.method !== 'GET') return;
-  if(url.origin !== location.origin) return; // never intercept live data / fonts / wa.me
-  e.respondWith(
-    fetch(e.request).then(function(res){
-      var copy = res.clone();
-      caches.open(CACHE).then(function(c){ c.put(e.request, copy); });
-      return res;
-    }).catch(function(){
-      return caches.match(e.request).then(function(m){ return m || caches.match('/'); });
-    })
-  );
-});
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="/" aria-label="SG Drives home">
+      <span class="logo-plate">SGD</span>
+      <span class="logo-name">SG DRIVES <span>· Ownership tools</span></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="/coe-prices-singapore/">COE</a>
+      <a href="/#tools">Tools</a>
+      <a href="/services/">Services</a>
+      <a href="/blog/" aria-current="page">Guides</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/6580336863" target="_blank" rel="noopener">WhatsApp us</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap-narrow page-head" style="padding-bottom:20px">
+    <div class="eyebrow">COE analysis</div>
+    <h1 style="max-width:16ch">COE Results: June 2026, 2nd Bidding</h1>
+    <p class="meta">Published [DATE] · ~3 min read · by SG Drives</p>
+  </div>
+
+  <div class="wrap-narrow section">
+    <article class="article">
+      <p><strong>The short version:</strong> [One-sentence summary — e.g. "Cat A eased slightly while Cat B held firm, keeping the two mass-market categories unusually close together."]</p>
+
+      <div class="pullbar">
+        <strong>This round:</strong> Cat A <strong>$XXX,XXX</strong> · Cat B <strong>$XXX,XXX</strong> · Cat C <strong>$XX,XXX</strong> · Cat D <strong>$X,XXX</strong> · Cat E <strong>$XXX,XXX</strong>. <a href="/coe-prices-singapore/" style="color:var(--sg-red);font-weight:600">See the live board and trend chart →</a>
+      </div>
+
+      <h2>What moved</h2>
+      <ul>
+        <li><strong>Cat A (cars up to 1,600cc / 130bhp):</strong> [up/down $X,XXX vs last round — one line on why, e.g. steady quota, EV inflow].</li>
+        <li><strong>Cat B (bigger / more powerful cars):</strong> [movement + one line].</li>
+        <li><strong>Cat E (open):</strong> [movement + one line — E often signals where B is heading].</li>
+        <li><strong>Cat C & D (commercial & bikes):</strong> [brief note].</li>
+      </ul>
+
+      <h2>What's driving it</h2>
+      <p>[2–3 sentences of plain-English context: quota changes this quarter, dealer bidding behaviour, any big launches, EEAI/EV effects. Keep it factual and neutral — no price predictions.]</p>
+
+      <h2>What it means if you're buying soon</h2>
+      <p>[2–3 sentences of practical takeaway. E.g. "If your current COE runs past 2028, there's little urgency this cycle. If you're deciding between a Cat A and Cat B car, the narrow gap this round means the bigger car costs less premium than usual to step up to."]</p>
+
+      <div class="cta-panel" style="margin-top:32px">
+        <div>
+          <b>Not sure whether to move now or wait?</b>
+          <p>Tell me your target car and timeline — I'll give you a straight read on the COE cycle for your situation.</p>
+        </div>
+        <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%20SG%20Drives%2C%20I%20read%20the%20COE%20analysis%20and%20want%20advice%20on%20timing" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+
+      <p style="margin-top:28px;font-size:13px;color:var(--ink-soft)">Figures from LTA published bidding results. This is general commentary, not financial advice.</p>
+    </article>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <div><strong style="color:var(--ink)">SG Drives</strong> · Singapore car ownership tools<br>© 2026 sgdrives.com</div>
+    <div class="disclaimer">Tools are provided for reference. Final figures are always determined by your bank, insurer or LTA. Verify important numbers before committing.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/6580336863" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.8 5 2.3 7L4.6 28l6.3-1.6c1.8 1 3.9 1.5 6.1 1.5 6.6 0 12-5.3 12-11.9C29 8.3 22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1 1-3.6-.3-.4c-1.2-1.7-1.9-3.7-1.9-5.8 0-5.4 4.8-9.8 10.6-9.8s10.6 4.4 10.6 9.8-4.8 10.4-10.6 10.4zm5.8-7.3c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.6 5.7 5 3.4 1.4 3.4.9 4 .9.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+</body>
+</html>

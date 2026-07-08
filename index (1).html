@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Car Depreciation Calculator Singapore — Know Your Car's Value Today</title>
-<meta name="description" content="Calculate your Singapore-registered car's true annual depreciation from purchase price, PARF rebate and COE remaining. Free and instant.">
-<link rel="canonical" href="https://www.sgdrives.com/car-depreciation-calculator-singapore/">
+<title>VRN Checksum Calculator Singapore — Find Your Car Plate's Check Letter</title>
+<meta name="description" content="Instantly find the correct check letter for any Singapore vehicle registration number with our free VRN checksum calculator.">
+<link rel="canonical" href="https://www.sgdrives.com/vrn-checksum-calculator-singapore/">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#14161A">
 <link rel="apple-touch-icon" href="/assets/icon-192.png">
 <link rel="icon" type="image/png" href="/assets/icon-192.png">
-<meta property="og:title" content="Car Depreciation Calculator Singapore">
-<meta property="og:description" content="True annual depreciation from price, PARF rebate and COE remaining. Compare any two cars fairly.">
-<meta property="og:url" content="https://www.sgdrives.com/car-depreciation-calculator-singapore/">
+<meta property="og:title" content="VRN Checksum Calculator Singapore">
+<meta property="og:description" content="Find the correct check letter for any Singapore plate instantly.">
+<meta property="og:url" content="https://www.sgdrives.com/vrn-checksum-calculator-singapore/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.sgdrives.com/assets/og-image.png">
 <meta property="og:site_name" content="SG Drives">
@@ -23,9 +23,9 @@
 <link rel="stylesheet" href="/assets/site.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Why is depreciation the key number for Singapore cars?","acceptedAnswer":{"@type":"Answer","text":"Because COE adds a large fixed, non-recoverable cost to every car, the fairest way to compare cars in Singapore is annual depreciation: what the car costs you per year of ownership after accounting for the guaranteed money back at deregistration."}},
-{"@type":"Question","name":"What is the PARF rebate?","acceptedAnswer":{"@type":"Answer","text":"The Preferential ARF rebate is a percentage of the ARF you paid, returned when the car is deregistered before it turns 10 years old. It ranges from 75% of ARF for cars under 5 years old down to 50% at just under 10 years."}},
-{"@type":"Question","name":"Where do I find my ARF or PARF figure?","acceptedAnswer":{"@type":"Answer","text":"Log in to OneMotoring with Singpass and check your vehicle's registration details, or refer to your Vehicle Sales Agreement. If you know your exact PARF rebate figure, enter it directly for the most accurate result."}}
+{"@type":"Question","name":"How is the Singapore plate check letter calculated?","acceptedAnswer":{"@type":"Answer","text":"The last two letters of the prefix are converted to numbers (A=1 to Z=26) and combined with the four digits, each multiplied by a fixed weight. The total is divided by 19 and the remainder maps to a letter in a fixed lookup sequence."}},
+{"@type":"Question","name":"Why do some plates skip certain letters?","acceptedAnswer":{"@type":"Answer","text":"The checksum lookup only contains 19 letters — F, I, N, O, Q, V and W never appear as check letters, which is why you will never see them at the end of a Singapore plate."}},
+{"@type":"Question","name":"Can I choose my own check letter?","acceptedAnswer":{"@type":"Answer","text":"No — the check letter is mathematically fixed by the prefix and digits. If you are bidding for a specific plate number, this tool tells you exactly which letter it will carry."}}
 ]}
 </script>
 </head>
@@ -49,84 +49,41 @@
 
 <main>
   <div class="wrap-narrow page-head">
-    <div class="eyebrow">Tool 02 — Depreciation</div>
-    <h1>Singapore Car Depreciation Calculator</h1>
-    <p class="lede">Because COE adds a fixed, non-recoverable cost to every car, depreciation here works differently from most other markets — and it's the single number that matters most when deciding whether to buy, sell, trade in, or hold. This calculator uses your purchase price, ARF paid, and COE dates to work out true annual depreciation, so you can compare any two cars on equal footing before you negotiate.</p>
+    <div class="eyebrow">Tool 04 — Number plates</div>
+    <h1>Singapore VRN Checksum Calculator</h1>
+    <p class="lede">Every Singapore vehicle registration number ends in a check letter that's mathematically derived from the letters and digits before it — useful if you're checking a plate's validity, bidding for a preferred number, or just curious how the system works. Enter any prefix and number and the correct check letter appears instantly.</p>
   </div>
 
   <div class="wrap-narrow section">
     <div class="tool-card">
-      <form id="depForm" onsubmit="return false">
-        <div class="form-grid">
-          <div>
-            <label class="f" for="price">Purchase price (S$)</label>
-            <input class="f" id="price" type="number" min="1000" step="100" placeholder="e.g. 205000" required>
-          </div>
-          <div>
-            <label class="f" for="arf">ARF paid (S$)</label>
-            <input class="f" id="arf" type="number" min="0" step="100" placeholder="e.g. 74374">
-            <p class="hint">From OneMotoring or your Vehicle Sales Agreement.</p>
-          </div>
-          <div>
-            <label class="f" for="regDate">Original registration date</label>
-            <input class="f" id="regDate" type="date">
-          </div>
-          <div>
-            <label class="f" for="coeExpiry">COE expiry date</label>
-            <input class="f" id="coeExpiry" type="date">
-            <p class="hint">Leave blank to assume registration + 10 years.</p>
-          </div>
-          <div class="full">
-            <label class="f" for="regEra">PARF rules — registration period</label>
-            <select class="f" id="regEra">
-              <option value="pre2023">Registered before Feb 2023 — PARF band, no cap</option>
-              <option value="cap60">Registered Feb 2023 – Feb 2026 — PARF band, capped at S$60,000</option>
-              <option value="cap30">Registered from Mar 2026 — 5% of ARF at 10 years, capped at S$30,000</option>
-            </select>
-            <p class="hint">Budget changes cut PARF sharply for newer registrations: the S$60k cap mainly bites high-ARF (big/luxury) cars registered from Feb 2023, while cars registered from Mar 2026 get just 5% of ARF, capped at S$30k.</p>
-          </div>
-          <div class="full">
-            <label class="f" for="parfOverride">Known PARF rebate (S$) — optional override</label>
-            <input class="f" id="parfOverride" type="number" min="0" step="1" placeholder="Enter your exact LTA figure if you have it">
-            <p class="hint">If filled, this replaces the ARF-based estimate. The estimate assumes deregistration in the final PARF band (50% of ARF).</p>
-          </div>
+      <div class="plate" aria-live="polite" style="margin-bottom:22px">
+        <span id="plateBody">SGD 8888</span><span class="check" id="plateCheck">Z</span>
+      </div>
+      <div class="form-grid">
+        <div>
+          <label class="f" for="prefix">Plate prefix (1–3 letters)</label>
+          <input class="f" id="prefix" type="text" maxlength="3" placeholder="e.g. SGD" style="text-transform:uppercase;font-family:'Saira Condensed';font-size:20px;letter-spacing:.12em" autocomplete="off" spellcheck="false">
         </div>
-        <div class="btn-row">
-          <button class="btn btn-primary" id="depBtn" type="button">Calculate depreciation</button>
-          <button class="btn btn-ghost" type="reset" onclick="document.getElementById('depResults').classList.remove('show')">Reset</button>
+        <div>
+          <label class="f" for="digits">Number (1–4 digits)</label>
+          <input class="f" id="digits" type="text" inputmode="numeric" maxlength="4" placeholder="e.g. 8888" style="font-family:'Saira Condensed';font-size:20px;letter-spacing:.12em" autocomplete="off">
         </div>
-      </form>
+      </div>
+      <p class="hint" style="margin-top:14px">The check letter updates as you type — no button needed. Three-letter prefixes use only the last two letters in the calculation; numbers shorter than four digits are padded with leading zeros.</p>
 
-      <div class="results" id="depResults" aria-live="polite">
-        <div class="res-grid">
-          <div class="res hero-res"><div class="k">Annual depreciation</div><div class="v" id="dAnnual">—</div></div>
-          <div class="res"><div class="k">Monthly cost of ownership</div><div class="v" id="dMonthly">—</div></div>
-          <div class="res"><div class="k">COE remaining</div><div class="v" id="dCoeLeft">—</div></div>
-        </div>
-        <table class="breakdown">
-          <tbody>
-            <tr><td>Purchase price</td><td class="num" id="dPrice">—</td></tr>
-            <tr><td>Estimated value at deregistration (PARF rebate)</td><td class="num" id="dParf">—</td></tr>
-            <tr><td>Total depreciation over remaining COE</td><td class="num" id="dTotal">—</td></tr>
-          </tbody>
-        </table>
-        <p class="res-note" id="dNote">Annual depreciation = (purchase price − deregistration value) ÷ years of COE remaining. PARF bands step down as the car ages, so cars crossing the 5-year mark depreciate faster — verify your exact rebate on OneMotoring.</p>
+      <div class="faq" style="margin-top:30px">
+        <details><summary>How the formula works</summary>
+          <p>The last two prefix letters convert to numbers (A=1 … Z=26). Together with the four digits, the six values are multiplied by the fixed weights 9, 4, 5, 4, 3 and 2, then summed. The remainder after dividing by 19 selects the check letter from the sequence A&nbsp;Z&nbsp;Y&nbsp;X&nbsp;U&nbsp;T&nbsp;S&nbsp;R&nbsp;P&nbsp;M&nbsp;L&nbsp;K&nbsp;J&nbsp;H&nbsp;G&nbsp;E&nbsp;D&nbsp;C&nbsp;B. That's also why F, I, N, O, Q, V and W never appear as check letters on Singapore roads.</p>
+        </details>
       </div>
     </div>
 
     <div class="cta-panel">
       <div>
-        <b>Want to know what your current car is really worth?</b>
-        <p>I'll give you an honest, no-obligation valuation alongside this estimate before you trade in or sell.</p>
+        <b>Holding onto a plate for your next car?</b>
+        <p>Let's make sure the retention and transfer line up smoothly with your next purchase — or if you're buying or selling a HUAT number, I can help there too.</p>
       </div>
-      <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%2C%20I%20used%20the%20depreciation%20calculator%20on%20sgdrives.com" target="_blank" rel="noopener">Chat on WhatsApp</a>
-    </div>
-
-    <div class="faq">
-      <h2>Common questions</h2>
-      <details><summary>Which PARF band applies to my car?</summary><p>The rebate is a sliding percentage of your ARF based on the car's age at deregistration: 75% under 5 years, then stepping down 5% per year to 50% at just under 10 years. Deregister after 10 years (e.g. after a COE renewal) and the PARF rebate is forfeited entirely.</p></details>
-      <details><summary>Why does my dealer's depreciation figure differ?</summary><p>Listings usually quote depreciation off the asking price and assume deregistration exactly at COE expiry. Your actual figure moves with the price you really pay, your exact PARF rebate, and any COE rebate if you deregister early. This tool lets you control those inputs.</p></details>
-      <details><summary>Does this include running costs?</summary><p>No — depreciation is purely the capital cost of the car itself. Road tax, insurance, fuel, parking and servicing come on top. But depreciation is usually the single largest cost, which is why it's the comparison number that matters.</p></details>
+      <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%2C%20I%20used%20the%20VRN%20checksum%20tool%20on%20sgdrives.com" target="_blank" rel="noopener">Chat on WhatsApp</a>
     </div>
   </div>
 </main>
@@ -144,57 +101,35 @@
 
 <script>
 (function(){
-  var fmt = function(n){ return 'S$' + n.toLocaleString('en-SG',{minimumFractionDigits:0,maximumFractionDigits:0}); };
+  var MAP = ['A','Z','Y','X','U','T','S','R','P','M','L','K','J','H','G','E','D','C','B'];
+  var pre = document.getElementById('prefix');
+  var dig = document.getElementById('digits');
+  var body = document.getElementById('plateBody');
+  var check = document.getElementById('plateCheck');
 
-  document.getElementById('depBtn').addEventListener('click', function(){
-    var price = parseFloat(document.getElementById('price').value);
-    var arf = parseFloat(document.getElementById('arf').value) || 0;
-    var parfOverride = parseFloat(document.getElementById('parfOverride').value);
-    var regVal = document.getElementById('regDate').value;
-    var coeVal = document.getElementById('coeExpiry').value;
+  function compute(letters, digits){
+    if(!/^[A-Z]{1,3}$/.test(letters) || !/^\d{1,4}$/.test(digits)) return null;
+    var l1 = letters.length >= 2 ? letters.charCodeAt(letters.length-2)-64 : 0;
+    var l2 = letters.charCodeAt(letters.length-1)-64;
+    var d = ('0000'+digits).slice(-4).split('').map(Number);
+    var sum = l1*9 + l2*4 + d[0]*5 + d[1]*4 + d[2]*3 + d[3]*2;
+    return MAP[sum % 19];
+  }
 
-    if(!(price>0)){ alert('Please enter the purchase price.'); return; }
+  function render(){
+    var L = pre.value.toUpperCase().replace(/[^A-Z]/g,'');
+    var D = dig.value.replace(/[^0-9]/g,'');
+    pre.value = L; dig.value = D;
+    if(L==='' && D===''){ L='SGD'; D='8888'; }
+    var c = compute(L, D);
+    body.textContent = (L||'·') + ' ' + (D||'·');
+    if(c){ check.textContent = c; check.style.opacity = 1; }
+    else { check.textContent = '·'; check.style.opacity = .4; }
+  }
 
-    var now = new Date();
-    var coeExpiry;
-    if(coeVal){ coeExpiry = new Date(coeVal); }
-    else if(regVal){ coeExpiry = new Date(regVal); coeExpiry.setFullYear(coeExpiry.getFullYear()+10); }
-    else { alert('Please enter either the registration date or the COE expiry date.'); return; }
-
-    var msLeft = coeExpiry - now;
-    if(msLeft <= 0){ alert('COE expiry is in the past — check your dates.'); return; }
-    var yearsLeft = msLeft / (365.25*24*3600*1000);
-
-    var parf;
-    var note;
-    var era = document.getElementById('regEra').value;
-    if(parfOverride >= 0 && document.getElementById('parfOverride').value !== ''){
-      parf = parfOverride;
-      note = 'Using your entered PARF rebate figure. Annual depreciation = (price − rebate) ÷ years of COE remaining.';
-    } else if(era === 'cap30'){
-      parf = Math.min(arf * 0.05, 30000);
-      note = 'Registered from Mar 2026: PARF = 5% of ARF at the end of 10 years, capped at S$30,000. With so little back at deregistration, nearly the entire price is depreciation — enter your exact LTA figure above if you have it.';
-    } else if(era === 'cap60'){
-      parf = Math.min(arf * 0.5, 60000);
-      note = 'Registered Feb 2023 – Feb 2026: PARF estimated at 50% of ARF (deregistration just before 10 years), capped at S$60,000 — the cap mainly affects high-ARF cars. Enter your exact LTA figure above for precision.';
-    } else {
-      parf = arf * 0.5;
-      note = 'PARF estimated at 50% of ARF (deregistration just before the 10-year mark). Bands: 75% under 5 yrs, stepping down 5% per year to 50% by year 10 — enter your exact LTA figure above for a precise result.';
-    }
-    if(parf >= price){ alert('Deregistration value cannot exceed the purchase price — check your figures.'); return; }
-
-    var total = price - parf;
-    var annual = total / yearsLeft;
-
-    document.getElementById('dAnnual').textContent = fmt(annual) + '/yr';
-    document.getElementById('dMonthly').textContent = fmt(annual/12) + '/mo';
-    document.getElementById('dCoeLeft').textContent = yearsLeft.toFixed(1) + ' yrs';
-    document.getElementById('dPrice').textContent = fmt(price);
-    document.getElementById('dParf').textContent = '− ' + fmt(parf);
-    document.getElementById('dTotal').textContent = fmt(total);
-    document.getElementById('dNote').textContent = note;
-    document.getElementById('depResults').classList.add('show');
-  });
+  pre.addEventListener('input', render);
+  dig.addEventListener('input', render);
+  render();
 })();
 </script>
 <script>
