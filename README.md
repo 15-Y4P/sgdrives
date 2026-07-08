@@ -3,528 +3,363 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SG Drives — Singapore Car Ownership Tools & Calculators</title>
-<link rel="canonical" href="https://www.sgdrives.com/">
-<meta name="description" content="Free Singapore car ownership tools: Rule of 78 loan settlement, depreciation calculator, VRN checksum, VRN appeal letter generator and NCD transfer.">
+<title>VRN & NCD Appeal Letter Generator Singapore — Plate Transfer + Insurance Letters</title>
+<meta name="description" content="Generate your VRN appeal letter and NCD transfer letter together in one go. Free tool for Singapore car owners transferring plate ownership and insurance discount.">
+<link rel="canonical" href="https://www.sgdrives.com/vrn-ncd-appeal-letter-generator-singapore/">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#14161A">
 <link rel="apple-touch-icon" href="/assets/icon-192.png">
 <link rel="icon" type="image/png" href="/assets/icon-192.png">
-<meta property="og:title" content="SG Drives — Singapore Car Ownership Tools & Calculators">
-<meta property="og:description" content="Free Singapore car tools: COE prices, Rule of 78 settlement, depreciation, EV vs petrol cost, VRN tools. No sign-up.">
-<meta property="og:url" content="https://www.sgdrives.com/">
+<meta property="og:title" content="VRN & NCD Transfer Letter Generator Singapore">
+<meta property="og:description" content="Generate submission-ready VRN appeal and NCD transfer letters in the accepted format. Free, nothing stored.">
+<meta property="og:url" content="https://www.sgdrives.com/vrn-ncd-appeal-letter-generator-singapore/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.sgdrives.com/assets/og-image.png">
 <meta property="og:site_name" content="SG Drives">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Why do I need two letters when transferring a car?","acceptedAnswer":{"@type":"Answer","text":"Changing the registered owner usually means a VRN appeal for the plate or owner particulars amendment, plus a separate NCD transfer letter to the insurer so the No Claim Discount moves across correctly. Miss the second and the new owner can lose years of accumulated discount."}},
+{"@type":"Question","name":"Can NCD be transferred to anyone?","acceptedAnswer":{"@type":"Answer","text":"Insurers generally allow NCD transfers only between immediate family members (typically spouse, and in some cases parent-child), or from a company vehicle to the primary named driver. Check your insurer's specific rules before submitting."}},
+{"@type":"Question","name":"Is my information stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. This tool runs entirely in your browser — nothing you type is sent to any server or saved."}}
+]}
+</script>
 <style>
-  :root{
-    --paper:#F5F6F3;
-    --paper-raise:#FFFFFF;
-    --ink:#14161A;
-    --ink-soft:#4A4F57;
-    --plate:#1A1C20;
-    --plate-text:#F2F3EF;
-    --sg-red:#C8102E;
-    --line:#D9DBD4;
-    --radius:14px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto}
-    *,*::before,*::after{animation:none!important;transition:none!important}
-  }
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'IBM Plex Sans',system-ui,sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none}
-  a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--sg-red);outline-offset:2px;border-radius:4px}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-
-  /* ---------- header ---------- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(245,246,243,.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{display:flex;align-items:center;gap:12px}
-  .logo-plate{
-    background:var(--plate);color:var(--plate-text);
-    font-family:'Saira Condensed',sans-serif;font-weight:700;
-    font-size:20px;letter-spacing:.14em;
-    padding:5px 12px 4px;border-radius:6px;
-    border:2px solid #000;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.15);
-  }
-  .logo-name{font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:.02em}
-  .logo-name span{color:var(--ink-soft);font-weight:500}
-  nav.links{display:flex;gap:28px;font-size:14.5px;font-weight:500}
-  nav.links a{color:var(--ink-soft);transition:color .15s}
-  nav.links a:hover{color:var(--sg-red)}
-  .nav-cta{
-    font-size:14px;font-weight:600;
-    background:var(--ink);color:#fff;
-    padding:9px 18px;border-radius:8px;
-    transition:background .15s;
-  }
-  .nav-cta:hover{background:var(--sg-red)}
-  @media(max-width:820px){nav.links{display:none}}
-
-  /* ---------- hero ---------- */
-  .hero{padding:72px 0 64px;border-bottom:1px solid var(--line)}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:44px}}
-  .eyebrow{
-    font-family:'Archivo',sans-serif;
-    font-variation-settings:'wdth' 115;
-    font-weight:600;font-size:12px;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--sg-red);
-    display:flex;align-items:center;gap:10px;margin-bottom:20px;
-  }
-  .eyebrow::before{content:"";width:26px;height:2px;background:var(--sg-red)}
-  h1{
-    font-family:'Archivo',sans-serif;
-    font-variation-settings:'wdth' 108;
-    font-weight:850;
-    font-size:clamp(38px,5.4vw,58px);
-    line-height:1.03;
-    letter-spacing:-.015em;
-    margin-bottom:22px;
-  }
-  h1 em{font-style:normal;color:var(--sg-red)}
-  .hero p.lede{font-size:18px;color:var(--ink-soft);max-width:44ch;margin-bottom:32px}
-  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    font-weight:600;font-size:15px;
-    padding:13px 24px;border-radius:10px;
-    transition:transform .12s, box-shadow .12s, background .15s;
-  }
-  .btn-primary{background:var(--ink);color:#fff}
-  .btn-primary:hover{background:var(--sg-red);transform:translateY(-1px)}
-  .btn-ghost{border:1.5px solid var(--line);background:var(--paper-raise);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--ink)}
-
-  /* ---------- live plate demo (signature) ---------- */
-  .demo-card{
-    background:var(--paper-raise);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:30px 30px 26px;
-    box-shadow:0 18px 40px -24px rgba(20,22,26,.28);
-  }
-  .demo-tag{
-    display:inline-flex;align-items:center;gap:7px;
-    font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--ink-soft);margin-bottom:18px;
-  }
-  .demo-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--sg-red);animation:pulse 2s infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  .plate{
-    background:linear-gradient(180deg,#22252A,#141619);
-    border:3px solid #000;
-    border-radius:10px;
-    box-shadow:inset 0 2px 0 rgba(255,255,255,.14), 0 4px 10px rgba(0,0,0,.28);
-    padding:20px 18px;
-    display:flex;justify-content:center;align-items:baseline;gap:14px;
-    font-family:'Saira Condensed',sans-serif;font-weight:700;
-    font-size:clamp(44px,6vw,60px);
-    color:var(--plate-text);
-    letter-spacing:.1em;
-    min-height:104px;
-    user-select:none;
-  }
-  .plate .check{
-    color:#FF4D5E;
-    text-shadow:0 0 18px rgba(255,77,94,.4);
-    min-width:.7em;text-align:center;
-    transition:opacity .15s;
-  }
-  .demo-form{display:flex;gap:10px;margin-top:20px}
-  .demo-form input{
-    flex:1;min-width:0;
-    font-family:'Saira Condensed',sans-serif;font-weight:600;
-    font-size:20px;letter-spacing:.12em;text-transform:uppercase;
-    padding:12px 16px;
-    border:1.5px solid var(--line);border-radius:9px;
-    background:var(--paper);color:var(--ink);
-  }
-  .demo-form input::placeholder{color:#A6AAA2;letter-spacing:.1em}
-  .demo-hint{font-size:13px;color:var(--ink-soft);margin-top:14px}
-  .demo-hint strong{color:var(--ink)}
-  .demo-link{margin-top:8px;font-size:13.5px;font-weight:600;color:var(--sg-red);display:inline-block}
-
-  /* ---------- tools ---------- */
-  .section{padding:76px 0}
-  .section-head{max-width:620px;margin-bottom:44px}
-  h2{
-    font-family:'Archivo',sans-serif;
-    font-variation-settings:'wdth' 108;
-    font-weight:800;font-size:clamp(28px,3.4vw,38px);
-    line-height:1.1;letter-spacing:-.01em;margin-bottom:14px;
-  }
-  .section-head p{color:var(--ink-soft);font-size:16.5px}
-  .tools{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-  @media(max-width:760px){.tools{grid-template-columns:1fr}}
-  .tool{
-    background:var(--paper-raise);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:28px;
-    display:flex;flex-direction:column;gap:12px;
-    transition:transform .15s, box-shadow .15s, border-color .15s;
-    position:relative;overflow:hidden;
-  }
-  .tool:hover{transform:translateY(-3px);border-color:var(--ink);box-shadow:0 16px 34px -22px rgba(20,22,26,.35)}
-  .tool-plate{
-    align-self:flex-start;
-    background:var(--plate);color:var(--plate-text);
-    font-family:'Saira Condensed',sans-serif;font-weight:700;
-    font-size:15px;letter-spacing:.16em;
-    padding:4px 12px 3px;border-radius:5px;border:1.5px solid #000;
-  }
-  .tool h3{
-    font-family:'Archivo',sans-serif;font-weight:750;
-    font-size:20px;letter-spacing:-.005em;margin-top:4px;
-  }
-  .tool p{color:var(--ink-soft);font-size:15px;flex:1}
-  .tool .go{
-    font-weight:600;font-size:14.5px;color:var(--sg-red);
-    display:inline-flex;align-items:center;gap:6px;
-  }
-  .tool .go::after{content:"→";transition:transform .15s}
-  .tool:hover .go::after{transform:translateX(4px)}
-
-  /* ---------- why strip ---------- */
-  .why{
-    background:var(--plate);color:var(--plate-text);
-    border-radius:var(--radius);
-    padding:52px 48px;
-    display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
-  }
-  @media(max-width:820px){.why{grid-template-columns:1fr;padding:40px 28px}}
-  .why h2{color:#fff}
-  .why p{color:#B9BCB4;font-size:16px}
-  .why-points{display:grid;gap:18px}
-  .why-point{display:flex;gap:14px;align-items:flex-start}
-  .why-point .mark{
-    flex:none;width:34px;height:34px;border-radius:8px;
-    background:rgba(255,255,255,.08);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:16px;
-    color:#FF6B7A;border:1px solid rgba(255,255,255,.12);
-  }
-  .why-point b{display:block;font-size:15.5px;color:#fff;margin-bottom:2px}
-  .why-point span{font-size:14px;color:#A7AAA2}
-
-  /* ---------- blog / contact ---------- */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  @media(max-width:760px){.split{grid-template-columns:1fr}}
-  .panel{
-    background:var(--paper-raise);border:1px solid var(--line);
-    border-radius:var(--radius);padding:34px;
-  }
-  .panel h3{font-family:'Archivo',sans-serif;font-weight:750;font-size:22px;margin-bottom:10px}
-  .panel p{color:var(--ink-soft);font-size:15px;margin-bottom:20px}
-
-  footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:20px}
-  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-soft)}
-  .foot .disclaimer{max-width:56ch}
+.sheet{margin-top:22px}
+.sheet-tag{
+  display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--ink);
+  padding:5px 12px;border-radius:7px 7px 0 0;
+}
+.sheet .letter{margin-top:0;border-radius:0 10px 10px 10px;box-shadow:0 12px 30px -20px rgba(20,22,26,.3);white-space:normal;font-size:15px;line-height:1.75}
+.letter .lrow{display:flex;gap:8px;margin-bottom:6px}
+.letter .lrow .ll{font-weight:700;min-width:110px}
+.letter .lrow .lc{flex:none}
+.letter .lrow .lv{flex:1}
+.letter .lrow .lv b{font-weight:700}
+.letter .lrow .lv u{text-underline-offset:3px}
+.letter p{margin:0 0 14px}
+.letter .re-line{font-style:italic;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.letter .sig{margin-top:44px}
+.letter .sig .line{border-bottom:1.5px dotted #555;width:240px;height:44px;margin-bottom:4px}
+.letter .sig .lbl{font-weight:700;margin-bottom:22px}
+.sheet-actions{margin-top:10px;display:flex;gap:10px}
+.sheet-actions button{font-size:13.5px;padding:9px 16px}
+@media print{
+  body.print-vrn #sheetNcd, body.print-ncd #sheetVrn{display:none!important}
+  .sheet{margin:0}
+  .sheet-tag,.sheet-actions{display:none!important}
+  .sheet .letter{border:none;box-shadow:none;border-radius:0;padding:24pt 8pt 0;font-size:12pt;line-height:1.85}
+  .sheet{break-after:page;page-break-after:always}
+  .sheet:last-of-type{break-after:auto;page-break-after:auto}
+}
+</style>
+<style>
+.letter{white-space:normal;font-size:15px}
+.lrow{display:flex;gap:0;margin-bottom:10px}
+.lrow .lk{flex:0 0 92px;font-weight:700}
+.lrow .lc{flex:0 0 18px}
+.letter p{margin:0 0 14px}
+.letter .sig{margin:34px 0 26px}
+.letter .sigline{width:230px;border-bottom:1.5px dotted #555;height:44px;margin-bottom:6px}
+.letter .frows{margin-top:8px}
+.letter .frows .lrow{margin-bottom:8px}
+.letter .frows .lk{flex-basis:110px}
+u i, i u{font-style:italic}
+@media print{
+  .letter .sigline{height:52px}
+}
 </style>
 </head>
 <body>
 
-<header>
+<header class="site">
   <div class="wrap nav">
-    <a class="logo" href="#" aria-label="SG Drives home">
+    <a class="logo" href="/" aria-label="SG Drives home">
       <span class="logo-plate">SGD</span>
       <span class="logo-name">SG DRIVES <span>· Ownership tools</span></span>
     </a>
     <nav class="links" aria-label="Main">
       <a href="/coe-prices-singapore/">COE</a>
-      <a href="#tools">Tools</a>
+      <a href="/#tools" aria-current="page">Tools</a>
       <a href="/services/">Services</a>
       <a href="/blog/">Guides</a>
     </nav>
     <a class="nav-cta" href="https://wa.me/6580336863" target="_blank" rel="noopener">WhatsApp us</a>
   </div>
 </header>
-<div class="promo-bar" style="background:#C8102E;color:#fff">
-  <div class="wrap" style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:10px 24px;font-size:14.5px;font-weight:600">
-    <span class="tag" style="background:#fff;color:#C8102E;font-family:'Archivo',sans-serif;font-weight:800;padding:2px 10px;border-radius:6px;font-size:13px;letter-spacing:.04em">PROMO</span>
-    <span>2.28% p.a. flat promotional interest rate — all cars, new or used, while it lasts.</span>
-    <a href="https://wa.me/6580336863?text=Hi%20SG%20Drives%2C%20I%27m%20interested%20in%20the%202.28%25%20promo%20rate" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px;font-weight:700;color:#fff">Contact me now →</a>
-  </div>
-</div>
-
 
 <main>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow">Singapore car ownership, decoded</div>
-        <h1>The numbers behind your car, <em>without the guesswork.</em></h1>
-        <p class="lede">Free calculators and generators built for Singapore's rules — Rule of 78 settlements, PARF-aware depreciation, VRN checksums and appeal letters. No sign-up, no sales pitch.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#tools">Browse all tools</a>
-          <a class="btn btn-ghost" href="/coe-prices-singapore/">COE trends &amp; outlook</a>
-        </div>
-      </div>
+  <div class="wrap-narrow page-head">
+    <div class="eyebrow">Tool 03 — Ownership letters</div>
+    <h1>VRN Appeal &amp; NCD Transfer Letter Generator (Singapore)</h1>
+    <p class="lede">Changing the registered owner of a car almost always means two letters need to go out, not one — a VRN appeal for the owner particulars amendment, and an NCD transfer letter to the insurer so your No Claim Discount moves across correctly. Miss the second one and the new owner can lose years of accumulated discount. This tool generates both letters together from the same set of details, so nothing falls through the cracks. Everything runs in your browser — nothing is stored or sent anywhere.</p>
+  </div>
 
-      <!-- HERO: live COE results board -->
-      <div class="hero-board" style="background:linear-gradient(180deg,#1E2126,#141619);border:3px solid #000;border-radius:16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.1), 0 22px 48px -26px rgba(20,22,26,.5);padding:24px 24px 20px;color:#F2F3EF">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+  <div class="wrap-narrow section">
+    <div class="tool-card">
+      <form id="ltrForm" onsubmit="return false">
+        <div class="form-grid">
           <div>
-            <div style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 112;font-weight:800;font-size:19px">COE BIDDING RESULTS</div>
-            <div id="hbDate" style="font-weight:600;font-size:12px;color:#A7AAA2;letter-spacing:.08em;text-transform:uppercase;margin-top:2px">JUN 2026 · 2ND BIDDING EXERCISE</div>
+            <label class="f" for="ltrType">Letters to generate</label>
+            <select class="f" id="ltrType">
+              <option value="both">Both — VRN appeal + NCD transfer</option>
+              <option value="vrn">VRN appeal letter only</option>
+              <option value="ncd">NCD transfer letter only</option>
+            </select>
           </div>
-          <span id="hbLive" style="display:none;color:#4ADE80;font-size:12px;font-weight:700">● LIVE</span>
-        </div>
-        <div id="hbGrid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px"></div>
-        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:#8B8E86">
-          <span>▲▼ vs previous round · source: LTA</span>
-          <a href="/coe-prices-singapore/" style="color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px">Full chart &amp; next-round outlook →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<script>
-(function(){
-  var CATS=['A','B','C','D','E'];
-  var DESC={A:'\u22641600cc / EV \u2264110kW',B:'>1600cc / EV >110kW',C:'Goods & buses',D:'Motorcycles',E:'Open'};
-  var FB=[
-    {m:'2026-06',b:2,A:123847,B:123502,C:93001,D:9989,E:129002},
-    {m:'2026-06',b:1,A:126009,B:126989,C:94000,D:10000,E:129000}
-  ];
-  var MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  function fmt(n){return 'S$'+Math.round(n).toLocaleString('en-SG')}
-  function render(L,P,live){
-    var g='';
-    CATS.forEach(function(c,i){
-      var d=P?L[c]-P[c]:0;
-      var col=d>0?'#FF6B7A':(d<0?'#4ADE80':'#A7AAA2');
-      var arrow=d>0?'\u25b2':(d<0?'\u25bc':'\u2014');
-      g+='<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:11px 12px 9px;'+(i===4?'grid-column:1/-1;':'')+'">'+
-        '<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">'+
-        '<span style="font-family:\'Saira Condensed\',sans-serif;font-weight:700;font-size:13px;letter-spacing:.12em;color:#A7AAA2">CAT '+c+'</span>'+
-        '<span style="font-size:11.5px;font-weight:700;color:'+col+'">'+arrow+' '+(d===0?'':Math.abs(d).toLocaleString('en-SG'))+'</span></div>'+
-        '<div style="font-family:\'Archivo\',sans-serif;font-weight:850;font-size:21px;letter-spacing:-.01em;font-variant-numeric:tabular-nums;margin-top:2px">'+fmt(L[c])+'</div>'+
-        '<div style="font-size:10px;color:#8B8E86;margin-top:2px">'+DESC[c]+'</div></div>';
-    });
-    document.getElementById('hbGrid').innerHTML=g;
-    var p=L.m.split('-');
-    document.getElementById('hbDate').textContent=(MO[parseInt(p[1],10)-1]+' '+p[0]+' \u00b7 '+(L.b===1?'1ST':'2ND')+' BIDDING EXERCISE').toUpperCase();
-    document.getElementById('hbLive').style.display=live?'':'none';
-  }
-  render(FB[0],FB[1],false);
-  fetch('https://data.gov.sg/api/action/datastore_search?resource_id=d_69b3380ad7e51aff3a7dcc84eba52b8a&limit=40').then(function(r){return r.json()}).then(function(j){
-    if(!j.success||!j.result||!j.result.records)return;
-    var map={};
-    j.result.records.forEach(function(rec){
-      var k=rec.month+'#'+rec.bidding_no;
-      if(!map[k])map[k]={m:rec.month,b:parseInt(rec.bidding_no,10)};
-      var c=(rec.vehicle_class||'').replace('Category ','').trim();
-      if(CATS.indexOf(c)>-1)map[k][c]=parseFloat(rec.premium);
-    });
-    // merge baked rounds in case the government feed lags behind published results
-    FB.forEach(function(f){
-      var k=f.m+'#'+f.b;
-      if(!map[k])map[k]=f;
-    });
-    var rounds=Object.keys(map).map(function(k){return map[k]})
-      .filter(function(r){return CATS.every(function(c){return typeof r[c]==='number'})})
-      .sort(function(a,b){return a.m===b.m?b.b-a.b:(a.m<b.m?1:-1)});
-    if(rounds.length>=2)render(rounds[0],rounds[1],true);
-  }).catch(function(){});
-})();
-</script>
-
-  <!-- TOOLS -->
-  <section class="section" id="tools">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>The toolbox.</h2>
-        <p>Singapore-only calculations that generic calculators get wrong — free, no sign-up.</p>
-      </div>
-      <div class="tools">
-        <a class="tool" href="/rule-78-loan-settlement-calculator/">
-          <span class="tool-plate">R78</span>
-          <h3>Rule of 78 Loan Settlement</h3>
-          <p>Planning to sell or refinance before your loan ends? See your exact early settlement amount — including the interest rebate banks calculate under Rule of 78, not simple pro-rating.</p>
-          <span class="go">Calculate settlement</span>
-        </a>
-        <a class="tool" href="/car-depreciation-calculator-singapore/">
-          <span class="tool-plate">DEP</span>
-          <h3>Car Depreciation Calculator</h3>
-          <p>The number every Singapore buyer compares. Get true annual depreciation from price, PARF rebate and COE left — so you can compare any two cars on equal footing.</p>
-          <span class="go">Work out depreciation</span>
-        </a>
-        <a class="tool" href="/vrn-ncd-appeal-letter-generator-singapore/">
-          <span class="tool-plate">NCD</span>
-          <h3>VRN Appeal Letter + NCD Transfer</h3>
-          <p>Retaining a plate or transferring your No-Claim Discount? Generate a properly formatted appeal letter in minutes instead of drafting one from scratch.</p>
-          <span class="go">Generate my letter</span>
-        </a>
-        <a class="tool" href="/ev-vs-petrol-cost-calculator-singapore/">
-          <span class="tool-plate">EV</span>
-          <h3>EV vs Petrol Cost Comparison</h3>
-          <p>Charging vs pump prices, road tax and your real monthly mileage — see which drivetrain is cheaper for how you actually drive, and the mileage where the EV starts saving.</p>
-          <span class="go">Compare my costs</span>
-        </a>
-        <a class="tool" href="/vrn-checksum-calculator-singapore/">
-          <span class="tool-plate">VRN</span>
-          <h3>VRN Checksum Calculator</h3>
-          <p>Eyeing a specific plate number? Compute the checksum letter for any prefix–number combination before you bid, using LTA's official formula.</p>
-          <span class="go">Check a plate</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY -->
-  <section class="section" id="why" style="padding-top:0">
-    <div class="wrap">
-      <div class="why">
-        <div>
-          <h2>Built by someone who does this daily.</h2>
-          <p style="margin-top:12px">SG Drives is maintained by a Singapore automotive industry veteran with over a decade in the trade. These are the same calculations run for real customers every week — published free, so you can walk into any showroom or dealership already knowing your numbers.</p>
-        </div>
-        <div class="why-points">
-          <div class="why-point">
-            <span class="mark">SG</span>
-            <div><b>Singapore-specific by design</b><span>PARF, ARF, COE and Rule of 78 logic — not adapted from overseas calculators.</span></div>
+          <div>
+            <label class="f" for="ltrDate">Letter date</label>
+            <input class="f" id="ltrDate" type="date">
           </div>
-          <div class="why-point">
-            <span class="mark">$0</span>
-            <div><b>Free, no sign-up</b><span>No accounts, no email capture, no ads following you around.</span></div>
+          <div>
+            <label class="f" for="carPlate">Vehicle registration no.</label>
+            <input class="f" id="carPlate" type="text" placeholder="e.g. SGD8888Z" style="text-transform:uppercase">
           </div>
-          <div class="why-point">
-            <span class="mark">10Y</span>
-            <div><b>Industry-tested numbers</b><span>Formulas cross-checked against real bank settlements and LTA outcomes.</span></div>
+          <div>
+            <label class="f" for="relationship">Relationship of transfer</label>
+            <select class="f" id="relationship">
+              <option>Spouse</option>
+              <option>Parent to Child</option>
+              <option>Child to Parent</option>
+              <option>Sibling</option>
+              <option>Company to Director</option>
+              <option>Director to Company</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div>
+            <label class="f" for="curName">Current owner / transferor name</label>
+            <input class="f" id="curName" type="text">
+          </div>
+          <div>
+            <label class="f" for="curId">Current owner NRIC / UEN</label>
+            <input class="f" id="curId" type="text" style="text-transform:uppercase">
+            <p class="hint">NRIC (S/T/F/G/M) or company UEN — detected automatically.</p>
+          </div>
+          <div>
+            <label class="f" for="newName">New owner / recipient name</label>
+            <input class="f" id="newName" type="text">
+          </div>
+          <div>
+            <label class="f" for="newId">New owner NRIC / UEN</label>
+            <input class="f" id="newId" type="text" style="text-transform:uppercase">
+          </div>
+          <div>
+            <label class="f" for="ncdPct">NCD percentage (for NCD letter)</label>
+            <select class="f" id="ncdPct">
+              <option>50%</option><option>40%</option><option>30%</option><option>20%</option><option>10%</option><option>0%</option>
+            </select>
+          </div>
+          <div>
+            <label class="f" for="insurer">Insurer name (for NCD letter)</label>
+            <input class="f" id="insurer" type="text" placeholder="e.g. Income / NTUC / Other">
+          </div>
+          <div>
+            <label class="f" for="vsaNo">VSA no. (optional)</label>
+            <input class="f" id="vsaNo" type="text">
+          </div>
+          <div>
+            <label class="f" for="coeNo">COE no. (optional)</label>
+            <input class="f" id="coeNo" type="text">
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="genBtn" type="button">Generate letters</button>
+          <button class="btn btn-ghost" id="copyBtn" type="button">Copy text</button>
+          <button class="btn btn-ghost" type="button" onclick="window.print()">Print both / save PDF</button>
+        </div>
+      </form>
 
-  <!-- SERVICES -->
-  <section class="section" id="services" style="padding-top:0">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Beyond the calculators.</h2>
-        <p>The tools give you the numbers — these two services get you the deal itself.</p>
-      </div>
-      <div class="tools">
-        <a class="tool" href="/services/#valuation">
-          <span class="tool-plate">VAL</span>
-          <h3>Best Used Car Valuation</h3>
-          <p>Online instant quotes are lowball anchors. Get a real valuation that weighs your PARF position, COE runway and model demand — contested across multiple buyers, usually same day.</p>
-          <span class="go">Get my valuation</span>
-        </a>
-        <a class="tool" href="/services/#car-hunting">
-          <span class="tool-plate">HUNT</span>
-          <h3>Car Recommendation &amp; Hunting</h3>
-          <p>New or used, this brand or that, buy now or wait a COE cycle — get a straight recommendation, then have the exact car hunted down, negotiated and papered end to end.</p>
-          <span class="go">Start my car hunt</span>
-        </a>
+      <div class="results" id="ltrResults" aria-live="polite">
+        <div class="sheet" id="sheetVrn">
+          <span class="sheet-tag">Letter 1 · VRN Appeal</span>
+          <div class="letter" id="vrnOut"></div>
+          <div class="sheet-actions no-print">
+            <button class="btn btn-ghost" type="button" onclick="printSheet('vrn')">Print this letter</button>
+            <button class="btn btn-ghost" type="button" onclick="copySheet('vrnOut')">Copy</button>
+          </div>
+        </div>
+        <div class="sheet" id="sheetNcd">
+          <span class="sheet-tag">Letter 2 · NCD Transfer</span>
+          <div class="letter" id="ncdOut"></div>
+          <div class="sheet-actions no-print">
+            <button class="btn btn-ghost" type="button" onclick="printSheet('ncd')">Print this letter</button>
+            <button class="btn btn-ghost" type="button" onclick="copySheet('ncdOut')">Copy</button>
+          </div>
+        </div>
+        <p class="res-note no-print">Printing both gives one letter per page, clean-cut. Review names and ID numbers carefully before submitting — they'll be matched against official records exactly as written.</p>
       </div>
     </div>
-  </section>
 
-  <!-- BLOG + CONTACT -->
-  <section class="section" style="padding-top:0">
-    <div class="wrap split">
-      <div class="panel">
-        <h3>Guides &amp; explainers</h3>
-        <p>Plain-English breakdowns of COE categories, PARF rebates, early settlement traps and more — written for owners, not accountants.</p>
-        <a class="btn btn-ghost" href="/blog/">Read the blog</a>
+    <div class="cta-panel">
+      <div>
+        <b>Transferring ownership or your NCD as part of a car change?</b>
+        <p>I handle these submissions weekly — happy to sanity-check your paperwork before it goes out.</p>
       </div>
-      <div class="panel">
-        <h3>Have a question about your numbers?</h3>
-        <p>If a calculation doesn't match what your bank or dealer quoted, reach out — odd cases are how the tools get better.</p>
-        <a class="btn btn-primary" href="https://wa.me/6580336863?text=Hi%2C%20I%20have%20a%20question%20about%20my%20numbers%20from%20sgdrives.com" target="_blank" rel="noopener">WhatsApp us</a>
-      </div>
+      <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%2C%20I%20used%20the%20letter%20generator%20on%20sgdrives.com" target="_blank" rel="noopener">Chat on WhatsApp</a>
     </div>
-  </section>
+
+    <div class="faq">
+      <h2>Common questions</h2>
+      <details><summary>Who can receive my NCD?</summary><p>Insurers generally allow NCD transfers only between immediate family members — most commonly spouses — or from a company vehicle to its primary named driver. Rules vary by insurer, so confirm eligibility before submitting.</p></details>
+      <details><summary>Where do these letters go?</summary><p>The VRN appeal goes to the party handling the ownership amendment (typically via your dealer or the relevant motor underwriting department), and the NCD transfer letter goes to your motor insurer. Your dealer or agent can usually submit both for you.</p></details>
+      <details><summary>Is my information stored?</summary><p>No. The letters are generated entirely in your browser. Nothing you type here is transmitted or saved anywhere.</p></details>
+    </div>
+  </div>
 </main>
 
-<footer>
+<footer class="site">
   <div class="wrap foot">
-    <div>
-      <strong style="color:var(--ink)">SG Drives</strong> · Singapore car ownership tools<br>
-      © 2026 sgdrives.com
-    </div>
-    <div class="disclaimer">
-      Tools are provided for reference. Final figures are always determined by your bank, insurer or LTA. Verify important numbers before committing.
-    </div>
+    <div><strong style="color:var(--ink)">SG Drives</strong> · Singapore car ownership tools<br>© 2026 sgdrives.com</div>
+    <div class="disclaimer">Tools are provided for reference. Final figures are always determined by your bank, insurer or LTA. Verify important numbers before committing.</div>
   </div>
 </footer>
 
-<script>
-(function(){
-  var input = document.getElementById('vrnInput');
-  var body = document.getElementById('plateBody');
-  var check = document.getElementById('plateCheck');
-  var MAP = ['A','Z','Y','X','U','T','S','R','P','M','L','K','J','H','G','E','D','C','B'];
-
-  function compute(raw){
-    var m = raw.toUpperCase().replace(/[^A-Z0-9]/g,'').match(/^([A-Z]{1,3})(\d{1,4})$/);
-    if(!m) return null;
-    var letters = m[1], digits = m[2];
-    // Use last two letters of the prefix (single-letter prefixes count as 0 + letter)
-    var l1 = letters.length >= 2 ? letters.charCodeAt(letters.length-2) - 64 : 0;
-    var l2 = letters.charCodeAt(letters.length-1) - 64;
-    var d = ('0000' + digits).slice(-4).split('').map(Number);
-    var sum = l1*9 + l2*4 + d[0]*5 + d[1]*4 + d[2]*3 + d[3]*2;
-    return { letters: letters, digits: digits, check: MAP[sum % 19] };
-  }
-
-  function render(){
-    var r = compute(input.value || 'SGD8888');
-    if(r){
-      body.textContent = r.letters + ' ' + r.digits;
-      check.textContent = r.check;
-      check.style.opacity = 1;
-    } else if(input.value.trim() === ''){
-      body.textContent = 'SGD 8888';
-      check.textContent = compute('SGD8888').check;
-      check.style.opacity = 1;
-    } else {
-      body.textContent = input.value.toUpperCase();
-      check.textContent = '·';
-      check.style.opacity = .4;
-    }
-  }
-
-  input.addEventListener('input', render);
-  render();
-})();
-</script>
-
-<style>
-.wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -8px rgba(11,61,31,.5);transition:transform .15s}
-.wa-float:hover{transform:scale(1.07)}
-.wa-float svg{width:30px;height:30px;fill:#fff}
-.wa-float::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.55);animation:waPulse 2.2s infinite}
-@keyframes waPulse{0%{transform:scale(.85);opacity:1}100%{transform:scale(1.25);opacity:0}}
-@media (prefers-reduced-motion: reduce){.wa-float::after{animation:none}}
-</style>
 <a class="wa-float" href="https://wa.me/6580336863" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.8 5 2.3 7L4.6 28l6.3-1.6c1.8 1 3.9 1.5 6.1 1.5 6.6 0 12-5.3 12-11.9C29 8.3 22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1 1-3.6-.3-.4c-1.2-1.7-1.9-3.7-1.9-5.8 0-5.4 4.8-9.8 10.6-9.8s10.6 4.4 10.6 9.8-4.8 10.4-10.6 10.4zm5.8-7.3c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.6 5.7 5 3.4 1.4 3.4.9 4 .9.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
 </a>
+
+<script>
+var printSheet, copySheet;
+(function(){
+  function esc(x){ return String(x||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function isCompany(id){
+    id = (id||'').trim().toUpperCase();
+    return id !== '' && !/^[STFGM]\d{7}[A-Z]$/.test(id);
+  }
+  function ordDate(v){
+    var d = v ? new Date(v) : new Date();
+    var n = d.getDate(), suf = 'th';
+    if(n%10===1 && n%100!==11) suf='st';
+    else if(n%10===2 && n%100!==12) suf='nd';
+    else if(n%10===3 && n%100!==13) suf='rd';
+    var M = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    return n + suf + ' ' + M[d.getMonth()] + ' ' + d.getFullYear();
+  }
+  function val(id){ return document.getElementById(id).value.trim(); }
+
+  function relRe(rel){
+    var map = {
+      'Spouse':'between Spouses',
+      'Parent to Child':'from Parent to Child',
+      'Child to Parent':'from Child to Parent',
+      'Sibling':'between Siblings',
+      'Company to Director':'from Company to Director',
+      'Director to Company':'from Director to Company'
+    };
+    return map[rel] ? 'Transfer of NCD ' + map[rel] : 'Transfer of NCD';
+  }
+
+  function parts(){
+    var corp = isCompany(val('curId'));
+    return {
+      date: ordDate(document.getElementById('ltrDate').value),
+      plate: val('carPlate').toUpperCase(),
+      rel: document.getElementById('relationship').value,
+      curName: val('curName'), curId: val('curId').toUpperCase(),
+      newName: val('newName'), newId: val('newId').toUpperCase(),
+      ncd: document.getElementById('ncdPct').value,
+      insurer: val('insurer') || 'Other',
+      vsa: val('vsaNo'), coe: val('coeNo'),
+      corp: corp,
+      I: corp?'We':'I', we: corp?'we':'I', my: corp?'our':'my'
+    };
+  }
+
+  function head(p, reText){
+    return '<div class="lrow"><span class="lk">Date</span><span class="lc">:</span><span class="lv"><b><u>'+esc(p.date)+'</u></b></span></div>'+
+      '<div class="lrow"><span class="lk">To</span><span class="lc">:</span><span class="lv"><b><u>Motor Underwriting Department</u></b></span></div>'+
+      '<div class="lrow" style="margin-bottom:24px"><span class="lk">Re</span><span class="lc">:</span><span class="lv"><b><u><i>'+reText+'</i></u></b></span></div>';
+  }
+
+  function sigBlock(p){
+    return '<p style="margin-top:26px">Yours sincerely,</p>'+
+      '<div class="sig"><div class="sigline"></div><b>Signature</b></div>'+
+      '<div class="frows">'+
+      '<div class="lrow"><span class="lk">Name</span><span class="lc">:</span><span class="lv">'+esc(p.curName)+'</span></div>'+
+      '<div class="lrow"><span class="lk">NRIC / UEN</span><span class="lc">:</span><span class="lv">'+esc(p.curId)+'</span></div>'+
+      '<div class="lrow"><span class="lk">Date</span><span class="lc">:</span><span class="lv">'+esc(p.date)+'</span></div>'+
+      '</div>';
+  }
+
+  function buildNcd(p){
+    return head(p, esc(relRe(p.rel)))+
+      '<p>'+p.I+', the registered owner of car bearing registration no. <b>'+esc(p.plate)+'</b> with NCD <b>'+esc(p.ncd)+'</b>.</p>'+
+      '<p>Car was insured with <b>'+esc(p.insurer)+'</b> (Insurance Company).<br>'+
+      p.I+' confirm that '+p.we.toLowerCase()+' have never made any insurance claim on this vehicle.</p>'+
+      '<p>'+p.I+' hereby would like to transfer the NCD to <b>'+esc(p.newName)+'</b> (NRIC/UEN <b>'+esc(p.newId)+'</b>).</p>'+
+      '<p>'+p.I+' understand that NCD cannot be transferred back.</p>'+
+      '<p>'+p.I+' confirm the above information to be true &amp; accurate.</p>'+
+      sigBlock(p);
+  }
+
+  function buildVrn(p){
+    var refs = '';
+    if(p.vsa) refs += '<div class="lrow"><span class="lk" style="flex-basis:140px">VSA No</span><span class="lc">:</span><span class="lv">'+esc(p.vsa)+'</span></div>';
+    if(p.coe) refs += '<div class="lrow"><span class="lk" style="flex-basis:140px">COE No</span><span class="lc">:</span><span class="lv">'+esc(p.coe)+'</span></div>';
+    return head(p, 'Amendment of Owner Particulars &mdash; Vehicle No. '+esc(p.plate))+
+      '<p>'+p.I+', the registered owner of vehicle bearing registration no. <b>'+esc(p.plate)+'</b>, would like to request an amendment of the registered owner particulars as follows:</p>'+
+      '<div class="frows" style="margin-bottom:16px">'+
+      '<div class="lrow"><span class="lk" style="flex-basis:140px">Current owner</span><span class="lc">:</span><span class="lv"><b>'+esc(p.curName)+'</b> ('+esc(p.curId)+')</span></div>'+
+      '<div class="lrow"><span class="lk" style="flex-basis:140px">Amended owner</span><span class="lc">:</span><span class="lv"><b>'+esc(p.newName)+'</b> ('+esc(p.newId)+')</span></div>'+
+      '<div class="lrow"><span class="lk" style="flex-basis:140px">Relationship</span><span class="lc">:</span><span class="lv">'+esc(p.rel)+'</span></div>'+
+      refs+'</div>'+
+      '<p>'+p.I+' would appreciate your assistance in effecting this amendment at your earliest convenience. Please contact '+(p.corp?'us':'me')+' should any further documentation be required.</p>'+
+      '<p>'+p.I+' confirm the above information to be true &amp; accurate.</p>'+
+      sigBlock(p);
+  }
+
+  document.getElementById('genBtn').addEventListener('click', function(){
+    if(!val('carPlate') || !val('curName') || !val('newName')){
+      alert('Please fill in at least the vehicle number, current owner and new owner names.');
+      return;
+    }
+    var p = parts();
+    var type = document.getElementById('ltrType').value;
+    document.getElementById('vrnOut').innerHTML = buildVrn(p);
+    document.getElementById('ncdOut').innerHTML = buildNcd(p);
+    document.getElementById('sheetVrn').style.display = (type==='ncd') ? 'none' : '';
+    document.getElementById('sheetNcd').style.display = (type==='vrn') ? 'none' : '';
+    document.getElementById('ltrResults').classList.add('show');
+  });
+
+  function doCopy(txt){
+    if(!txt){ alert('Generate the letters first.'); return; }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ alert('Copied to clipboard.'); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+      alert('Copied to clipboard.');
+    }
+  }
+
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var showA = document.getElementById('sheetVrn').style.display !== 'none';
+    var showB = document.getElementById('sheetNcd').style.display !== 'none';
+    var a = document.getElementById('vrnOut').innerText;
+    var b = document.getElementById('ncdOut').innerText;
+    doCopy([showA?a:'', showB?b:''].filter(Boolean).join('\n\n\n'));
+  });
+
+  copySheet = function(id){ doCopy(document.getElementById(id).innerText); };
+
+  printSheet = function(which){
+    if(!document.getElementById('vrnOut').innerHTML && !document.getElementById('ncdOut').innerHTML){
+      alert('Generate the letters first.'); return;
+    }
+    document.body.classList.add('print-'+which);
+    window.print();
+    setTimeout(function(){ document.body.classList.remove('print-'+which); }, 300);
+  };
+})();
+</script>
 <script>
 if('serviceWorker' in navigator){ window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js'); }); }
 </script>

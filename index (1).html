@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VRN Checksum Calculator Singapore — Find Your Car Plate's Check Letter</title>
-<meta name="description" content="Instantly find the correct check letter for any Singapore vehicle registration number with our free VRN checksum calculator.">
-<link rel="canonical" href="https://www.sgdrives.com/vrn-checksum-calculator-singapore/">
+<title>EV vs Petrol Cost Calculator Singapore — Which Is Cheaper For You?</title>
+<meta name="description" content="Compare EV charging vs petrol running costs in Singapore based on your real monthly mileage, consumption, road tax and current pump and charging prices. Find your breakeven mileage.">
+<link rel="canonical" href="https://www.sgdrives.com/ev-vs-petrol-cost-calculator-singapore/">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#14161A">
 <link rel="apple-touch-icon" href="/assets/icon-192.png">
 <link rel="icon" type="image/png" href="/assets/icon-192.png">
-<meta property="og:title" content="VRN Checksum Calculator Singapore">
-<meta property="og:description" content="Find the correct check letter for any Singapore plate instantly.">
-<meta property="og:url" content="https://www.sgdrives.com/vrn-checksum-calculator-singapore/">
+<meta property="og:title" content="EV vs Petrol Cost Calculator Singapore">
+<meta property="og:description" content="See which drivetrain is cheaper for how you actually drive — and the mileage where an EV starts saving.">
+<meta property="og:url" content="https://www.sgdrives.com/ev-vs-petrol-cost-calculator-singapore/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.sgdrives.com/assets/og-image.png">
 <meta property="og:site_name" content="SG Drives">
@@ -21,13 +21,36 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How is the Singapore plate check letter calculated?","acceptedAnswer":{"@type":"Answer","text":"The last two letters of the prefix are converted to numbers (A=1 to Z=26) and combined with the four digits, each multiplied by a fixed weight. The total is divided by 19 and the remainder maps to a letter in a fixed lookup sequence."}},
-{"@type":"Question","name":"Why do some plates skip certain letters?","acceptedAnswer":{"@type":"Answer","text":"The checksum lookup only contains 19 letters — F, I, N, O, Q, V and W never appear as check letters, which is why you will never see them at the end of a Singapore plate."}},
-{"@type":"Question","name":"Can I choose my own check letter?","acceptedAnswer":{"@type":"Answer","text":"No — the check letter is mathematically fixed by the prefix and digits. If you are bidding for a specific plate number, this tool tells you exactly which letter it will carry."}}
-]}
-</script>
+<script src="/assets/chart.umd.js"></script>
+<style>
+.info-bars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px}
+@media(max-width:760px){.info-bars{grid-template-columns:1fr}}
+.ibar{background:var(--paper-raise);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.ibar .t{font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sg-red);margin-bottom:8px}
+.ibar .row{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.ibar .row:last-of-type{border-bottom:none}
+.ibar .row b{font-variant-numeric:tabular-nums}
+.ibar .upd{font-size:11.5px;color:var(--ink-soft);margin-top:8px}
+.unit-row{display:flex;gap:8px}
+.unit-row input{flex:1;min-width:0}
+.unit-row select{flex:0 0 128px}
+.slider-wrap{margin:6px 0 4px}
+input[type=range]{width:100%;accent-color:var(--sg-red);height:34px}
+.km-read{font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;font-variant-numeric:tabular-nums}
+.verdict{
+  margin-top:24px;border-radius:12px;padding:20px 24px;color:#fff;
+  font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);line-height:1.35;
+}
+.verdict.ev{background:#0B7A3E}
+.verdict.petrol{background:var(--sg-red)}
+.verdict small{display:block;font-family:'IBM Plex Sans';font-weight:500;font-size:13.5px;opacity:.85;margin-top:6px}
+.chart-wrap2{position:relative;height:320px;margin-top:22px}
+@media(max-width:700px){.chart-wrap2{height:260px}}
+.shortcuts{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.chargers-note{background:var(--plate);color:#F2F3EF;border-radius:12px;padding:18px 22px;margin-top:14px;font-size:14px;display:flex;gap:10px 26px;flex-wrap:wrap;align-items:baseline}
+.chargers-note b{font-family:'Archivo',sans-serif;font-size:20px;color:#4ADE80}
+.chargers-note span{color:#B9BCB4}
+</style>
 </head>
 <body>
 
@@ -48,42 +71,141 @@
 </header>
 
 <main>
-  <div class="wrap-narrow page-head">
-    <div class="eyebrow">Tool 04 — Number plates</div>
-    <h1>Singapore VRN Checksum Calculator</h1>
-    <p class="lede">Every Singapore vehicle registration number ends in a check letter that's mathematically derived from the letters and digits before it — useful if you're checking a plate's validity, bidding for a preferred number, or just curious how the system works. Enter any prefix and number and the correct check letter appears instantly.</p>
+  <div class="wrap-narrow page-head" style="padding-bottom:28px">
+    <div class="eyebrow">Tool 05 — EV vs Petrol</div>
+    <h1 style="margin-bottom:6px">EV vs Petrol: which is cheaper for you?</h1>
+    <p class="asof" style="margin:0">Running cost comparison on your real numbers · excludes servicing &amp; maintenance</p>
   </div>
 
   <div class="wrap-narrow section">
-    <div class="tool-card">
-      <div class="plate" aria-live="polite" style="margin-bottom:22px">
-        <span id="plateBody">SGD 8888</span><span class="check" id="plateCheck">Z</span>
-      </div>
-      <div class="form-grid">
-        <div>
-          <label class="f" for="prefix">Plate prefix (1–3 letters)</label>
-          <input class="f" id="prefix" type="text" maxlength="3" placeholder="e.g. SGD" style="text-transform:uppercase;font-family:'Saira Condensed';font-size:20px;letter-spacing:.12em" autocomplete="off" spellcheck="false">
-        </div>
-        <div>
-          <label class="f" for="digits">Number (1–4 digits)</label>
-          <input class="f" id="digits" type="text" inputmode="numeric" maxlength="4" placeholder="e.g. 8888" style="font-family:'Saira Condensed';font-size:20px;letter-spacing:.12em" autocomplete="off">
-        </div>
-      </div>
-      <p class="hint" style="margin-top:14px">The check letter updates as you type — no button needed. Three-letter prefixes use only the last two letters in the calculation; numbers shorter than four digits are padded with leading zeros.</p>
 
-      <div class="faq" style="margin-top:30px">
-        <details><summary>How the formula works</summary>
-          <p>The last two prefix letters convert to numbers (A=1 … Z=26). Together with the four digits, the six values are multiplied by the fixed weights 9, 4, 5, 4, 3 and 2, then summed. The remainder after dividing by 19 selects the check letter from the sequence A&nbsp;Z&nbsp;Y&nbsp;X&nbsp;U&nbsp;T&nbsp;S&nbsp;R&nbsp;P&nbsp;M&nbsp;L&nbsp;K&nbsp;J&nbsp;H&nbsp;G&nbsp;E&nbsp;D&nbsp;C&nbsp;B. That's also why F, I, N, O, Q, V and W never appear as check letters on Singapore roads.</p>
-        </details>
+    <!-- LIVE PRICE INFO BARS -->
+    <div class="info-bars">
+      <div class="ibar">
+        <div class="t">Petrol prices (listed pump)</div>
+        <div class="row"><span>95-octane</span><b>from S$3.46/L</b></div>
+        <div class="row"><span>98-octane</span><b>from S$3.97/L</b></div>
+        <div class="row"><span>Effective with card discounts</span><b>~S$2.66–2.75/L</b></div>
+        <div class="upd">Updated 6 Jul 2026 · before station promos · varies by brand</div>
+      </div>
+      <div class="ibar">
+        <div class="t">EV charging rates</div>
+        <div class="row"><span>Home (SP tariff + GST)</span><b>~S$0.30/kWh</b></div>
+        <div class="row"><span>Public AC (median)</span><b>~S$0.69/kWh</b></div>
+        <div class="row"><span>Public DC fast (median)</span><b>~S$0.80/kWh</b></div>
+        <div class="upd">Updated 22 Jun 2026 · public network medians · cheapest public AC ~S$0.45–0.55</div>
+      </div>
+    </div>
+
+    <!-- CALCULATOR -->
+    <div class="tool-card">
+      <div class="form-grid">
+        <div class="full">
+          <label class="f" for="kmSlider">Monthly mileage — <span class="km-read" id="kmRead">1,200 km</span> <span id="kmYear" style="font-size:14px;font-weight:600;color:var(--ink-soft)">(14,400 km/year)</span></label>
+          <div class="slider-wrap">
+            <input type="range" id="kmSlider" min="100" max="4000" step="50" value="1200" aria-label="Monthly mileage in km">
+          </div>
+        </div>
+        <div>
+          <label class="f" for="petCons">Petrol consumption</label>
+          <div class="unit-row">
+            <input class="f" id="petCons" type="number" min="1" step="0.1" value="12">
+            <select class="f" id="petUnit">
+              <option value="kmpl">km/L</option>
+              <option value="lp100">L/100km</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="f" for="evCons">EV efficiency</label>
+          <div class="unit-row">
+            <input class="f" id="evCons" type="number" min="0.5" step="0.1" value="6">
+            <select class="f" id="evUnit">
+              <option value="kmpkwh">km/kWh</option>
+              <option value="kwhp100">kWh/100km</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="f" for="petPrice">Petrol price (S$/L)</label>
+          <input class="f" id="petPrice" type="number" min="0.5" step="0.01" value="2.70">
+          <p class="hint">Your effective price after card discounts.</p>
+        </div>
+        <div>
+          <label class="f" for="evPrice">Charging cost (S$/kWh)</label>
+          <input class="f" id="evPrice" type="number" min="0.05" step="0.01" value="0.69">
+          <p class="hint">Home ~0.30 · public AC ~0.69 · DC ~0.80.</p>
+        </div>
+        <div>
+          <label class="f" for="petTax">Petrol car road tax (S$/yr)</label>
+          <input class="f" id="petTax" type="number" min="0" step="1" placeholder="e.g. 744">
+        </div>
+        <div>
+          <label class="f" for="evTax">EV road tax incl. AFC (S$/yr)</label>
+          <input class="f" id="evTax" type="number" min="0" step="1" placeholder="e.g. 1400">
+        </div>
+        <div>
+          <label class="f" for="petDep">Petrol car depreciation (S$/yr) — optional</label>
+          <input class="f" id="petDep" type="number" min="0" step="100" placeholder="e.g. 14000">
+          <p class="hint">From the <a href="/car-depreciation-calculator-singapore/" style="color:var(--sg-red);font-weight:600">depreciation calculator</a>.</p>
+        </div>
+        <div>
+          <label class="f" for="evDep">EV depreciation (S$/yr) — optional</label>
+          <input class="f" id="evDep" type="number" min="0" step="100" placeholder="e.g. 16000">
+          <p class="hint">Fill both to compare true total cost of ownership.</p>
+        </div>
+      </div>
+
+      <div class="verdict ev" id="verdict" aria-live="polite"></div>
+
+      <div class="results show" style="margin-top:22px">
+        <div class="res-grid">
+          <div class="res"><div class="k">EV running cost</div><div class="v" id="evMo">—</div><div class="k" style="margin-top:4px;text-transform:none;letter-spacing:0" id="evYrC">—</div></div>
+          <div class="res"><div class="k">Petrol running cost</div><div class="v" id="petMo">—</div><div class="k" style="margin-top:4px;text-transform:none;letter-spacing:0" id="petYrC">—</div></div>
+          <div class="res hero-res"><div class="k">You save</div><div class="v" id="saveMo">—</div><div class="k" style="margin-top:4px;text-transform:none;letter-spacing:0;color:#A7AAA2" id="saveYrC">—</div></div>
+        </div>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>EV energy cost per km</td><td class="num" id="evKm">—</td></tr>
+            <tr><td>Petrol fuel cost per km</td><td class="num" id="petKm">—</td></tr>
+            <tr><td>Annual saving at this mileage</td><td class="num" id="saveYr">—</td></tr>
+            <tr><td>Breakeven mileage (EV starts saving)</td><td class="num" id="breakeven">—</td></tr>
+            <tr id="tcoHead" style="display:none"><td colspan="2" style="font-weight:700;padding-top:16px">True cost incl. depreciation</td></tr>
+            <tr id="tcoEvRow" style="display:none"><td>EV total (energy + road tax + depreciation)</td><td class="num" id="tcoEv">—</td></tr>
+            <tr id="tcoPetRow" style="display:none"><td>Petrol total (fuel + road tax + depreciation)</td><td class="num" id="tcoPet">—</td></tr>
+            <tr id="tcoDiffRow" style="display:none"><td><b>Real difference: EV vs ICE</b></td><td class="num" id="tcoDiff">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chart-wrap2"><canvas id="evChart"></canvas></div>
+      <p class="res-note">Comparison covers energy cost and road tax only — it excludes servicing, maintenance, insurance, depreciation and COE differences. Drag the mileage slider to see how the gap moves with your driving.</p>
+
+      <div class="shortcuts">
+        <a class="btn btn-ghost" href="https://onemotoring.lta.gov.sg/content/onemotoring/home/digitalservices/enquire-road-tax-expiry-date.html" target="_blank" rel="noopener">Enquire Road Tax (LTA) ↗</a>
+        <a class="btn btn-ghost" href="https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/upfront-vehicle-costs/fuel-cost-calculator.html" target="_blank" rel="noopener">Enquire Fuel Consumption (LTA) ↗</a>
+      </div>
+
+      <div class="chargers-note">
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;letter-spacing:.14em;color:#A7AAA2">SG CHARGING NETWORK</span>
+        <span><b>12,000+</b> charging points islandwide</span>
+        <span>SP Mobility 3,300+ · Charge+ 5,300+ · CDG ENGIE 2,000+ · Shell Recharge &amp; more</span>
+        <span>National target: <b style="color:#F2F3EF">60,000</b> by 2030</span>
       </div>
     </div>
 
     <div class="cta-panel">
       <div>
-        <b>Holding onto a plate for your next car?</b>
-        <p>Let's make sure the retention and transfer line up smoothly with your next purchase — or if you're buying or selling a HUAT number, I can help there too.</p>
+        <b>Thinking of making the switch to electric?</b>
+        <p>Run your exact numbers with me — including the purchase price, COE and trade-in side that this calculator doesn't cover.</p>
       </div>
-      <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%2C%20I%20used%20the%20VRN%20checksum%20tool%20on%20sgdrives.com" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="btn btn-wa" href="https://wa.me/6580336863?text=Hi%20SG%20Drives%2C%20I%20compared%20EV%20vs%20petrol%20costs%20on%20sgdrives.com%20and%20want%20to%20discuss" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+
+    <div class="faq">
+      <details><summary>Why doesn't this include servicing and maintenance?</summary><p>Servicing costs vary hugely by model, workshop and package — bundling a guess into the math would make the comparison less honest, not more. EVs generally cost less to service (no oil, fewer moving parts, regen braking reduces brake wear), so if the calculator already shows the EV cheaper on energy alone, maintenance typically widens the gap.</p></details>
+      <details><summary>Which charging price should I use?</summary><p>Use the rate you'd realistically charge at most of the time. Home charging (~S$0.30/kWh) if you have a landed property or condo charger; the public AC median (~S$0.69/kWh) if you rely on HDB or mall chargers; DC fast (~S$0.80/kWh) only if you're a heavy fast-charge user.</p></details>
+      <details><summary>Where do I find my road tax figures?</summary><p>Use the Enquire Road Tax shortcut above for your current vehicle, or check OneMotoring's tax structure pages when comparing a car you're considering. Note EVs pay an Additional Flat Component on top of the power-based road tax.</p></details>
     </div>
   </div>
 </main>
@@ -91,7 +213,7 @@
 <footer class="site">
   <div class="wrap foot">
     <div><strong style="color:var(--ink)">SG Drives</strong> · Singapore car ownership tools<br>© 2026 sgdrives.com</div>
-    <div class="disclaimer">Tools are provided for reference. Final figures are always determined by your bank, insurer or LTA. Verify important numbers before committing.</div>
+    <div class="disclaimer">Price references are drawn from published market data on the dates indicated and change over time. Tools are for reference only — verify current prices before deciding.</div>
   </div>
 </footer>
 
@@ -101,35 +223,139 @@
 
 <script>
 (function(){
-  var MAP = ['A','Z','Y','X','U','T','S','R','P','M','L','K','J','H','G','E','D','C','B'];
-  var pre = document.getElementById('prefix');
-  var dig = document.getElementById('digits');
-  var body = document.getElementById('plateBody');
-  var check = document.getElementById('plateCheck');
+  var $ = function(id){ return document.getElementById(id); };
+  var fmt = function(n){ return 'S$' + n.toLocaleString('en-SG',{minimumFractionDigits:2,maximumFractionDigits:2}); };
+  var fmt0 = function(n){ return 'S$' + Math.round(n).toLocaleString('en-SG'); };
+  var chart = null;
 
-  function compute(letters, digits){
-    if(!/^[A-Z]{1,3}$/.test(letters) || !/^\d{1,4}$/.test(digits)) return null;
-    var l1 = letters.length >= 2 ? letters.charCodeAt(letters.length-2)-64 : 0;
-    var l2 = letters.charCodeAt(letters.length-1)-64;
-    var d = ('0000'+digits).slice(-4).split('').map(Number);
-    var sum = l1*9 + l2*4 + d[0]*5 + d[1]*4 + d[2]*3 + d[3]*2;
-    return MAP[sum % 19];
+  function petrolPerKm(){
+    var v = parseFloat($('petCons').value)||0, price = parseFloat($('petPrice').value)||0;
+    if(v<=0) return 0;
+    var lPerKm = $('petUnit').value==='kmpl' ? 1/v : v/100;
+    return lPerKm * price;
+  }
+  function evPerKm(){
+    var v = parseFloat($('evCons').value)||0, price = parseFloat($('evPrice').value)||0;
+    if(v<=0) return 0;
+    var kwhPerKm = $('evUnit').value==='kmpkwh' ? 1/v : v/100;
+    return kwhPerKm * price;
   }
 
-  function render(){
-    var L = pre.value.toUpperCase().replace(/[^A-Z]/g,'');
-    var D = dig.value.replace(/[^0-9]/g,'');
-    pre.value = L; dig.value = D;
-    if(L==='' && D===''){ L='SGD'; D='8888'; }
-    var c = compute(L, D);
-    body.textContent = (L||'·') + ' ' + (D||'·');
-    if(c){ check.textContent = c; check.style.opacity = 1; }
-    else { check.textContent = '·'; check.style.opacity = .4; }
+  function calc(){
+    var km = parseInt($('kmSlider').value,10);
+    $('kmRead').textContent = km.toLocaleString('en-SG') + ' km';
+    $('kmYear').textContent = '(' + (km*12).toLocaleString('en-SG') + ' km/year)';
+    var pKm = petrolPerKm(), eKm = evPerKm();
+    var pTax = (parseFloat($('petTax').value)||0)/12;
+    var eTax = (parseFloat($('evTax').value)||0)/12;
+    var pMo = pKm*km + pTax;
+    var eMo = eKm*km + eTax;
+    var save = pMo - eMo;
+
+    $('evKm').textContent = fmt(eKm) + '/km';
+    $('petKm').textContent = fmt(pKm) + '/km';
+    $('evMo').textContent = fmt0(eMo) + '/mo';
+    $('petMo').textContent = fmt0(pMo) + '/mo';
+    $('evYrC').textContent = fmt0(eMo*12) + ' per year';
+    $('petYrC').textContent = fmt0(pMo*12) + ' per year';
+    $('saveMo').textContent = (save>=0?'':'−') + fmt0(Math.abs(save)) + '/mo';
+    $('saveYrC').textContent = (save>=0?'':'−') + fmt0(Math.abs(save)*12) + ' per year';
+    $('saveYr').textContent = (save>=0?'':'−') + fmt0(Math.abs(save)*12);
+
+    // true TCO incl. depreciation (both fields required)
+    var pDep = parseFloat($('petDep').value)||0;
+    var eDep = parseFloat($('evDep').value)||0;
+    var showTco = pDep>0 && eDep>0;
+    ['tcoHead','tcoEvRow','tcoPetRow','tcoDiffRow'].forEach(function(id){ $(id).style.display = showTco?'':'none'; });
+    if(showTco){
+      var tEv = eMo + eDep/12, tPet = pMo + pDep/12;
+      var tDiff = tPet - tEv;
+      $('tcoEv').textContent = fmt0(tEv)+'/mo · '+fmt0(tEv*12)+'/yr';
+      $('tcoPet').textContent = fmt0(tPet)+'/mo · '+fmt0(tPet*12)+'/yr';
+      $('tcoDiff').textContent = (tDiff>=0?'EV cheaper by ':'Petrol cheaper by ')+fmt0(Math.abs(tDiff))+'/mo ('+fmt0(Math.abs(tDiff)*12)+'/yr)';
+    }
+
+    // breakeven: km where eMo == pMo → km = (eTax - pTax)/(pKm - eKm)
+    var be = null;
+    if(pKm > eKm){
+      be = Math.max(0, (eTax - pTax)/(pKm - eKm));
+      $('breakeven').textContent = be===0 ? 'EV cheaper from the first km' : '~'+Math.round(be).toLocaleString('en-SG')+' km/month';
+    } else {
+      $('breakeven').textContent = 'Petrol cheaper per km at these prices';
+    }
+
+    var v = $('verdict');
+    if(save > 0){
+      v.className = 'verdict ev';
+      v.innerHTML = 'At '+km.toLocaleString('en-SG')+' km/month, the <u>EV is cheaper</u> by '+fmt0(save)+'/month ('+fmt0(save*12)+'/year).' +
+        '<small>Energy + road tax only — servicing, insurance and purchase price not included.</small>';
+    } else if(save < 0){
+      v.className = 'verdict petrol';
+      v.innerHTML = 'At '+km.toLocaleString('en-SG')+' km/month, <u>petrol is cheaper</u> by '+fmt0(-save)+'/month.' +
+        '<small>' + (be && be>0 ? 'Drive above ~'+Math.round(be).toLocaleString('en-SG')+' km/month and the EV takes over.' : 'At these prices the EV does not overtake on energy cost alone.') + '</small>';
+    } else {
+      v.className = 'verdict ev';
+      v.innerHTML = 'Dead even at '+km.toLocaleString('en-SG')+' km/month.';
+    }
+
+    drawChart(pKm, eKm, pTax, eTax, km, be);
   }
 
-  pre.addEventListener('input', render);
-  dig.addEventListener('input', render);
-  render();
+  function drawChart(pKm, eKm, pTax, eTax, km, be){
+    if(typeof Chart === 'undefined') return;
+    var maxKm = 4000, step = 100, labels = [], pData = [], eData = [];
+    for(var x=0; x<=maxKm; x+=step){
+      labels.push(x);
+      pData.push(pKm*x + pTax);
+      eData.push(eKm*x + eTax);
+    }
+    var cfg = {
+      type:'line',
+      data:{labels:labels, datasets:[
+        {label:'Petrol / month', data:pData, borderColor:'#C8102E', backgroundColor:'#C8102E', borderWidth:2.5, pointRadius:0, tension:0},
+        {label:'EV / month', data:eData, borderColor:'#0B7A3E', backgroundColor:'#0B7A3E', borderWidth:2.5, pointRadius:0, tension:0},
+        {label:'Your mileage', data:labels.map(function(x){ return x===Math.round(km/step)*step ? Math.max(pKm*x+pTax, eKm*x+eTax) : null; }),
+         borderColor:'#14161A', backgroundColor:'#14161A', pointRadius:5, pointStyle:'rectRot', showLine:false}
+      ]},
+      options:{
+        responsive:true, maintainAspectRatio:false, animation:false,
+        interaction:{mode:'index', intersect:false},
+        plugins:{
+          legend:{labels:{font:{family:'IBM Plex Sans', size:12}, usePointStyle:true, boxWidth:8}},
+          tooltip:{
+            backgroundColor:'#14161A', padding:10, cornerRadius:8,
+            callbacks:{
+              title:function(items){ return items[0].label + ' km/month'; },
+              label:function(ctx){ return ctx.dataset.label==='Your mileage' ? null : ' '+ctx.dataset.label+': S$'+Math.round(ctx.parsed.y).toLocaleString('en-SG'); }
+            }
+          }
+        },
+        scales:{
+          x:{title:{display:true,text:'km per month',font:{family:'IBM Plex Sans',size:11}},grid:{display:false},ticks:{maxTicksLimit:9,font:{size:11}}},
+          y:{title:{display:true,text:'S$ per month',font:{family:'IBM Plex Sans',size:11}},grid:{color:'#E7E9E2'},ticks:{font:{size:11},callback:function(v){return '$'+v;}}}
+        }
+      }
+    };
+    if(chart){ chart.data = cfg.data; chart.update(); }
+    else { chart = new Chart($('evChart'), cfg); }
+  }
+
+  ['kmSlider','petCons','petUnit','evCons','evUnit','petPrice','evPrice','petTax','evTax','petDep','evDep'].forEach(function(id){
+    $(id).addEventListener('input', calc);
+    $(id).addEventListener('change', calc);
+  });
+
+  // sensible unit defaults when toggling
+  $('petUnit').addEventListener('change', function(){
+    $('petCons').value = this.value==='kmpl' ? 12 : 8.3;
+    calc();
+  });
+  $('evUnit').addEventListener('change', function(){
+    $('evCons').value = this.value==='kmpkwh' ? 6 : 16.7;
+    calc();
+  });
+
+  calc();
 })();
 </script>
 <script>
